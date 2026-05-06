@@ -563,6 +563,59 @@ function(){
 });
 
 </script>
+<script>
 
+function playChannel(url){
+
+const video =
+document.getElementById('video');
+
+if(Hls.isSupported()){
+
+if(window.hls){
+window.hls.destroy();
+}
+
+const hls = new Hls({
+
+enableWorker:true,
+
+lowLatencyMode:true
+
+});
+
+window.hls = hls;
+
+hls.loadSource(url);
+
+hls.attachMedia(video);
+
+hls.on(Hls.Events.MANIFEST_PARSED,
+
+function(){
+
+video.play();
+
+});
+
+hls.on(Hls.Events.ERROR,
+
+function(event,data){
+
+console.log(data);
+
+alert("Stream Failed / Blocked");
+});
+
+}else if(video.canPlayType(
+'application/vnd.apple.mpegurl')){
+
+video.src = url;
+
+video.play();
+}
+}
+
+</script>
 </body>
 </html>
