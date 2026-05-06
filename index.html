@@ -12,384 +12,151 @@
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-
-  background:
-  radial-gradient(circle at top,#1a0010,#050505 50%);
-
-  color:white;
-
-  font-family:Arial,sans-serif;
-
-  overflow:hidden;
+background:
+radial-gradient(circle at top,#1a0010,#050505 50%);
+color:white;
+font-family:Arial,sans-serif;
+overflow:hidden;
 }
 
-/* HEADER */
-
 .header{
-
-  position:fixed;
-
-  top:0;
-
-  left:0;
-
-  width:100%;
-
-  height:60px;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  padding:0 15px;
-
-  background:
-  rgba(10,10,10,0.9);
-
-  backdrop-filter:blur(15px);
-
-  z-index:99999;
-
-  border-bottom:
-  1px solid rgba(255,255,255,0.08);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 15px;
+background:rgba(10,10,10,0.9);
+backdrop-filter:blur(15px);
+z-index:99999;
 }
 
 .logo{
-
-  font-size:26px;
-
-  font-weight:bold;
-
-  color:#ff003c;
-
-  animation:glow 2s infinite alternate;
+font-size:26px;
+font-weight:bold;
+color:#ff003c;
 }
-
-@keyframes glow{
-
-  from{
-
-    text-shadow:
-    0 0 10px #ff003c;
-  }
-
-  to{
-
-    text-shadow:
-    0 0 25px #ff003c,
-    0 0 45px #ff003c;
-  }
-}
-
-.join-btn{
-
-  background:#ff003c;
-
-  color:white;
-
-  border:none;
-
-  padding:10px 18px;
-
-  border-radius:30px;
-
-  font-weight:bold;
-}
-
-/* VIDEO AREA */
 
 .video-section{
-
-  position:fixed;
-
-  top:60px;
-
-  left:0;
-
-  width:100%;
-
-  height:33vh;
-
-  background:black;
-
-  z-index:999;
+position:fixed;
+top:60px;
+left:0;
+width:100%;
+height:33vh;
+background:black;
+z-index:999;
 }
 
 video{
-
-  width:100%;
-
-  height:100%;
-
-  object-fit:cover;
-
-  background:black;
+width:100%;
+height:100%;
+object-fit:cover;
+background:black;
 }
-
-/* LIVE BADGE */
-
-.live-badge{
-
-  position:absolute;
-
-  top:10px;
-
-  right:10px;
-
-  background:red;
-
-  color:white;
-
-  padding:6px 12px;
-
-  border-radius:30px;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-  animation:pulse 1s infinite;
-
-  z-index:9999;
-}
-
-@keyframes pulse{
-
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.1);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-}
-
-/* CONTENT */
 
 .content{
-
-  position:absolute;
-
-  top:calc(33vh + 60px);
-
-  left:0;
-
-  width:100%;
-
-  height:calc(67vh - 60px);
-
-  overflow-y:auto;
-
-  padding-bottom:120px;
+position:absolute;
+top:calc(33vh + 60px);
+left:0;
+width:100%;
+height:calc(67vh - 60px);
+overflow-y:auto;
+padding-bottom:120px;
 }
 
-/* SEARCH */
-
 .search-box{
-
-  padding:15px;
+padding:15px;
 }
 
 .search-box input{
-
-  width:100%;
-
-  padding:16px;
-
-  border:none;
-
-  outline:none;
-
-  border-radius:18px;
-
-  background:
-  rgba(255,255,255,0.06);
-
-  color:white;
-
-  font-size:16px;
-
-  backdrop-filter:blur(10px);
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:18px;
+background:rgba(255,255,255,0.06);
+color:white;
+font-size:16px;
 }
-
-/* GRID */
 
 .grid{
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(3,1fr);
-
-  gap:15px;
-
-  padding:15px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+padding:15px;
 }
-
-/* CARD */
 
 .card{
-
-  background:
-  rgba(255,255,255,0.05);
-
-  border:
-  1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter:
-  blur(18px);
-
-  border-radius:24px;
-
-  padding:18px;
-
-  text-align:center;
-
-  transition:0.35s;
-
-  position:relative;
-
-  overflow:hidden;
-}
-
-.card::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-  linear-gradient(
-  135deg,
-  rgba(255,0,60,0.12),
-  transparent);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+border-radius:24px;
+padding:18px;
+text-align:center;
+transition:0.35s;
 }
 
 .card:hover{
-
-  transform:
-  translateY(-5px)
-  scale(1.03);
-
-  box-shadow:
-  0 0 20px rgba(255,0,60,0.5);
+transform:translateY(-5px);
+box-shadow:0 0 20px rgba(255,0,60,0.5);
 }
 
 .card img{
-
-  width:70px;
-
-  height:70px;
-
-  object-fit:contain;
+width:70px;
+height:70px;
+object-fit:contain;
 }
 
 .card h3{
-
-  margin-top:10px;
-
-  font-size:14px;
+margin-top:10px;
+font-size:14px;
 }
 
-/* BOTTOM NAV */
-
 .bottom-nav{
-
-  position:fixed;
-
-  bottom:10px;
-
-  left:10px;
-
-  right:10px;
-
-  background:
-  rgba(15,15,15,0.9);
-
-  backdrop-filter:blur(15px);
-
-  border:
-  1px solid rgba(255,255,255,0.08);
-
-  border-radius:35px;
-
-  display:flex;
-
-  justify-content:space-around;
-
-  align-items:center;
-
-  padding:18px;
-
-  z-index:99999;
-
-  box-shadow:
-  0 0 25px rgba(255,0,60,0.3);
+position:fixed;
+bottom:10px;
+left:10px;
+right:10px;
+background:rgba(15,15,15,0.9);
+backdrop-filter:blur(15px);
+border-radius:35px;
+display:flex;
+justify-content:space-around;
+padding:18px;
+z-index:99999;
 }
 
 .nav{
-
-  text-align:center;
-
-  font-size:22px;
-
-  color:white;
+font-size:22px;
 }
 
 .active{
-
-  color:#ff003c;
+color:#ff003c;
 }
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-
-  width:5px;
-}
-
-::-webkit-scrollbar-thumb{
-
-  background:#ff003c;
-
-  border-radius:20px;
-}
-
-/* MOBILE */
 
 @media(max-width:768px){
 
-  .grid{
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
 
-    grid-template-columns:
-    repeat(2,1fr);
-  }
+.video-section{
+height:30vh;
+}
 
-  .video-section{
-
-    height:30vh;
-  }
-
-  .content{
-
-    top:calc(30vh + 60px);
-
-    height:calc(70vh - 60px);
-  }
+.content{
+top:calc(30vh + 60px);
+height:calc(70vh - 60px);
+}
 }
 
 </style>
@@ -397,76 +164,56 @@ video{
 
 <body>
 
-<!-- HEADER -->
-
 <div class="header">
 
-  <div class="logo">
-    LIVEFY TV
-  </div>
-
-  <button class="join-btn">
-    JOIN
-  </button>
-
+<div class="logo">
+LIVEFY TV
 </div>
 
-<!-- VIDEO -->
+</div>
 
 <div class="video-section">
 
-  <div class="live-badge">
-    LIVE
-  </div>
-
-  <video id="video"
-  controls
-  autoplay>
-  </video>
+<video id="video"
+controls
+autoplay>
+</video>
 
 </div>
-
-<!-- CONTENT -->
 
 <div class="content">
 
-  <!-- SEARCH -->
+<div class="search-box">
 
-  <div class="search-box">
-
-    <input type="text"
-    id="search"
-    placeholder="Search channels...">
-
-  </div>
-
-  <!-- CHANNELS -->
-
-  <div class="grid"
-  id="channels">
-  </div>
+<input type="text"
+id="search"
+placeholder="Search channels...">
 
 </div>
 
-<!-- BOTTOM NAV -->
+<div class="grid"
+id="channels">
+</div>
+
+</div>
 
 <div class="bottom-nav">
 
-  <div class="nav active">
-    🏠
-  </div>
+<div class="nav active">
+🏠
+</div>
 
-  <div class="nav">
-    📺
-  </div>
+<div class="nav">
+📺
+</div>
 
-  <div class="nav">
-    🎬
-  </div>
+<div class="nav">
+🎬
+</div>
 
-  <div class="nav">
-    ⚙️
-  </div>
+<div class="nav">
+⚙️
+</div>
 
 </div>
 
@@ -480,107 +227,64 @@ fetch('channels.json')
 
 .then(data => {
 
-  const channels = data.channels;
+const channels = data.channels;
 
-  window.allChannels = channels;
+window.allChannels = channels;
 
-  loadChannels(channels);
+loadChannels(channels);
+
 });
 
-/* LOAD FUNCTION */
+/* SHOW CHANNELS */
 
 function loadChannels(channels){
 
-  let html = "";
+let html = "";
 
-  channels.forEach(channel => {
+channels.forEach(channel => {
 
-    if(!channel.name || !channel.url)
-    return;
+if(!channel.name || !channel.url)
+return;
 
-    html += `
+html += `
 
-    <div class="card"
+<div class="card"
 
-    onclick="playChannel('${channel.url}')">
+onclick="playChannel('${channel.url}')">
 
-      <img src="https://cdn-icons-png.flaticon.com/512/2504/2504947.png">
+<img src="https://cdn-icons-png.flaticon.com/512/2504/2504947.png">
 
-      <h3>${channel.name}</h3>
+<h3>${channel.name}</h3>
 
-    </div>
+</div>
 
-    `;
-  });
+`;
 
-  document
-  .getElementById('channels')
-
-  .innerHTML = html;
-}
-
-/* PLAYER */
-
-function playChannel(url){
-
-  const video =
-  document.getElementById('video');
-
-  if(Hls.isSupported()){
-
-    const hls = new Hls();
-
-    hls.loadSource(url);
-
-    hls.attachMedia(video);
-  }
-
-  video.play();
-}
-
-/* SEARCH */
-
-document
-.getElementById('search')
-
-.addEventListener('keyup',
-
-function(){
-
-  const value =
-  this.value.toLowerCase();
-
-  const filtered =
-  window.allChannels.filter(ch =>
-
-    ch.name
-    .toLowerCase()
-    .includes(value)
-
-  );
-
-  loadChannels(filtered);
 });
 
-</script>
-<script>
+document
+.getElementById('channels')
+.innerHTML = html;
+}
+
+/* ADVANCED PLAYER */
 
 function playChannel(url){
 
 const video =
 document.getElementById('video');
 
-if(Hls.isSupported()){
-
 if(window.hls){
 window.hls.destroy();
 }
 
+if(Hls.isSupported()){
+
 const hls = new Hls({
 
 enableWorker:true,
-
-lowLatencyMode:true
+lowLatencyMode:true,
+backBufferLength:90
 
 });
 
@@ -605,6 +309,7 @@ function(event,data){
 console.log(data);
 
 alert("Stream Failed / Blocked");
+
 });
 
 }else if(video.canPlayType(
@@ -616,6 +321,32 @@ video.play();
 }
 }
 
+/* SEARCH */
+
+document
+.getElementById('search')
+
+.addEventListener('keyup',
+
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const filtered =
+window.allChannels.filter(ch =>
+
+ch.name
+.toLowerCase()
+.includes(value)
+
+);
+
+loadChannels(filtered);
+
+});
+
 </script>
+
 </body>
 </html>
