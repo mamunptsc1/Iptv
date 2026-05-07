@@ -125,30 +125,18 @@ margin-bottom:18px;
 color:#9ba8c7;
 }
 
-/* CATEGORY */
+/* SEARCH */
 
-.category-bar{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-overflow-x:auto;
-}
-
-.category-btn{
+.search{
+width:100%;
+padding:16px;
 background:#081a34;
-padding:12px 18px;
+border:none;
 border-radius:14px;
-font-size:14px;
-border:1px solid rgba(255,255,255,0.05);
-white-space:nowrap;
-cursor:pointer;
-transition:0.3s;
-}
-
-.category-btn.active{
-background:#ff005c;
+margin-bottom:20px;
 color:#fff;
-box-shadow:0 0 15px rgba(255,0,92,0.5);
+font-size:15px;
+outline:none;
 }
 
 /* GRID */
@@ -218,17 +206,6 @@ font-size:15px;
 color:#ff005c;
 font-weight:bold;
 border-top:1px solid rgba(255,255,255,0.08);
-}
-
-/* SCROLL */
-
-::-webkit-scrollbar{
-width:4px;
-}
-
-::-webkit-scrollbar-thumb{
-background:#ff005c;
-border-radius:20px;
 }
 
 /* MOBILE */
@@ -305,27 +282,11 @@ playsinline>
 PREMIUM TV CHANNELS
 </div>
 
-<!-- CATEGORY -->
-
-<div class="category-bar">
-
-<div class="category-btn active"
-onclick="filterCategory('all',this)">
-ALL (<span id="allCount">0</span>)
-</div>
-
-<div class="category-btn"
-onclick="filterCategory('bangla',this)">
-BANGLA
-</div>
-  <div class="category-btn"
-onclick="filterCategory('sport',this)">
-SPORT
-</div>
-
-</div>
-
-<!-- CHANNELS -->
+<input
+type="text"
+class="search"
+id="search"
+placeholder="Search channels...">
 
 <div class="grid"
 id="channels">
@@ -347,74 +308,23 @@ function updateClock(){
 
 const now = new Date();
 
-const days = [
-'রবিবার',
-'সোমবার',
-'মঙ্গলবার',
-'বুধবার',
-'বৃহস্পতিবার',
-'শুক্রবার',
-'শনিবার'
-];
-
-const months = [
-'জানুয়ারি',
-'ফেব্রুয়ারি',
-'মার্চ',
-'এপ্রিল',
-'মে',
-'জুন',
-'জুলাই',
-'আগস্ট',
-'সেপ্টেম্বর',
-'অক্টোবর',
-'নভেম্বর',
-'ডিসেম্বর'
-];
-
-const bdTime =
-new Date(
+const bd =
 now.toLocaleString(
-'en-US',
-{timeZone:'Asia/Dhaka'}
-)
-);
-
-let hour = bdTime.getHours();
-
-const minute =
-String(
-bdTime.getMinutes()
-).padStart(2,'0');
-
-const second =
-String(
-bdTime.getSeconds()
-).padStart(2,'0');
-
-const ampm =
-hour >= 12 ? 'PM' : 'AM';
-
-hour = hour % 12;
-
-hour = hour ? hour : 12;
-
-const day =
-days[bdTime.getDay()];
-
-const date =
-bdTime.getDate();
-
-const month =
-months[bdTime.getMonth()];
-
-const year =
-bdTime.getFullYear();
+'en-GB',
+{
+timeZone:'Asia/Dhaka',
+weekday:'short',
+day:'2-digit',
+month:'short',
+year:'numeric',
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+});
 
 document.getElementById(
 'clock'
-).innerHTML =
-${day}, ${date} ${month} ${year}, ${hour}:${minute}:${second} ${ampm};
+).innerHTML = bd;
 
 }
 
@@ -424,7 +334,7 @@ updateClock();
 
 /* LOAD CHANNELS */
 
-fetch('/channels.json')
+fetch('channels.json')
 
 .then(res => res.json())
 
@@ -434,11 +344,6 @@ window.allChannels = data.channels;
 
 loadChannels(data.channels);
 
-document.getElementById(
-'allCount'
-).innerText =
-data.channels.length;
-
 });
 
 /* SHOW CHANNELS */
@@ -447,16 +352,16 @@ function loadChannels(channels){
 
 let html = '';
 
-channels.forEach((ch,index) => {
+channels.forEach(ch => {
 
-html += 
+html += `
 
 <div class="card"
 onclick="playChannel('${ch.url}', this)">
 
 <img
-src="${ch.logo || 'https://i.ibb.co/3k5p1t4/live-icon.png'}"
-onerror="this.src='https://i.ibb.co/3k5p1t4/live-icon.png'">
+src="${ch.logo || 'https://cdn-icons-png.flaticon.com/512/810/810228.png'}"
+onerror="this.src='https://cdn-icons-png.flaticon.com/512/810/810228.png'">
 
 <h3>${ch.name}</h3>
 
@@ -469,54 +374,6 @@ onerror="this.src='https://i.ibb.co/3k5p1t4/live-icon.png'">
 document.getElementById(
 'channels'
 ).innerHTML = html;
-}
-
-/* CATEGORY FILTER */
-
-function filterCategory(type,el){
-
-document
-.querySelectorAll('.category-btn')
-.forEach(btn=>{
-btn.classList.remove('active');
-});
-
-el.classList.add('active');
-
-let filtered = [];
-
-if(type === 'all'){
-
-filtered = window.allChannels;
-
-}
-
-else if(type === 'bangla'){
-
-filtered =
-window.allChannels.filter(ch=>
-
-ch.category &&
-ch.category.toLowerCase() === 'bangla'
-
-);
-
-}
-
-else if(type === 'sport'){
-
-filtered =
-window.allChannels.filter(ch=>
-
-ch.category &&
-ch.category.toLowerCase() === 'sport'
-
-);
-
-}
-
-loadChannels(filtered);
-
 }
 
 /* PLAYER */
@@ -569,7 +426,33 @@ video.play();
 
 }
 
-/* REMOTE CONTROL */
+/* SEARCH */
+
+document
+.getElementById('search')
+
+.addEventListener(
+'keyup',
+
+function(){
+
+const value =
+this.value.toLowerCase();
+
+const filtered =
+window.allChannels.filter(ch=>
+
+ch.name
+.toLowerCase()
+.includes(value)
+
+);
+
+loadChannels(filtered);
+
+});
+
+/* REMOTE VOLUME */
 
 document.addEventListener(
 'keydown',
