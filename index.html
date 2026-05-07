@@ -1,3 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LIVE TV</title>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#081426;
+color:white;
+overflow:hidden;
+}
+
+/* TOPBAR */
+
+.topbar{
+height:45px;
+background:#ff0055;
+display:flex;
+align-items:center;
+overflow:hidden;
+position:relative;
+z-index:99999;
+}
+
+.notice{
+background:black;
+padding:14px;
+font-size:13px;
+font-weight:bold;
+z-index:2;
+}
+
+.marquee{
+white-space:nowrap;
+display:inline-block;
+padding-left:20px;
+animation:move 15s linear infinite;
+font-size:13px;
+font-weight:bold;
+}
+
+@keyframes move{
+0%{
+transform:translateX(100%);
+}
+100%{
+transform:translateX(-100%);
+}
+}
+
+/* LIVE CLOCK */
+
+#bd-clock{
+position:absolute;
+right:10px;
+font-size:11px;
+font-weight:bold;
+background:rgba(0,0,0,0.25);
+padding:6px 10px;
+border-radius:20px;
+}
+
+/* VIDEO */
+
+.player{
+position:relative;
+width:100%;
+height:32vh;
+background:black;
+}
+
+video{
+width:100%;
+height:100%;
+object-fit:cover;
+background:black;
+}
+
+/* LIVE BADGE */
+
+.live-banner{
+position:absolute;
+top:12px;
+left:50%;
+transform:translateX(-50%);
+background:#ff0055;
+padding:8px 18px;
+border-radius:30px;
+font-size:13px;
+font-weight:bold;
+z-index:9999;
+box-shadow:0 0 15px #ff0055;
+}
+
+/* CONTENT */
+
+.content{
+height:calc(100vh - 32vh - 115px);
+overflow-y:auto;
+padding-bottom:90px;
+}
+
+/* TITLE */
+
+.section{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 18px 10px;
+}
+
+.title{
+font-size:14px;
+letter-spacing:3px;
+color:#9db0ca;
+font-weight:bold;
+}
+
+/* SEARCH */
+
+.search{
+padding:0 15px 15px;
+}
+
+.search input{
+width:100%;
+padding:14px;
+border:none;
+outline:none;
+border-radius:15px;
+background:#13233d;
+color:white;
+font-size:15px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+padding:15px;
+}
+
+/* CARD */
+
+.card{
+background:#13233d;
+border-radius:22px;
+padding:22px 10px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.06);
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+border-color:#ff0055;
+}
+
+.card img{
+width:65px;
+height:65px;
+object-fit:contain;
+margin-bottom:10px;
+}
+
+.card h3{
+font-size:14px;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:70px;
+background:#091529;
+display:flex;
+justify-content:space-evenly;
+align-items:center;
+border-top:1px solid rgba(255,255,255,0.08);
+z-index:99999;
+}
+
+.nav{
+text-align:center;
+font-size:13px;
+color:#9aa8bb;
+}
+
+.active{
+color:#ff0055;
+}
+
+.icon{
+font-size:23px;
+display:block;
+margin-bottom:4px;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+width:5px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#ff0055;
+border-radius:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.player{
+height:28vh;
+}
+
+.content{
+height:calc(100vh - 28vh - 115px);
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
 <!-- TOPBAR -->
 
 <div class="topbar">
@@ -7,14 +258,14 @@ NOTICE
 </div>
 
 <div class="marquee">
-সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড সময় লাগতে পারে
+সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড সময় লাগতে পারে
 </div>
 
 <div id="bd-clock"></div>
 
 </div>
 
-<!-- PLAYER -->
+<!-- VIDEO PLAYER -->
 
 <div class="player">
 
@@ -22,12 +273,43 @@ NOTICE
 🔴 LIVE TV
 </div>
 
-<video 
+<video
 id="video"
 controls
 playsinline
 controlsList="nodownload">
 </video>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<div class="section">
+
+<div class="title">
+PREMIUM TV CHANNELS
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search channels...">
+
+</div>
+
+<!-- CHANNEL GRID -->
+
+<div class="grid"
+id="channels">
+</div>
 
 </div>
 
@@ -47,185 +329,123 @@ LIVE TV
 
 </div>
 
-<style>
-
-/* TOPBAR */
-
-.topbar{
-
-height:45px;
-
-background:#ff0055;
-
-display:flex;
-
-align-items:center;
-
-overflow:hidden;
-
-position:relative;
-
-z-index:99999;
-
-}
-
-/* NOTICE */
-
-.notice{
-
-background:black;
-
-padding:14px;
-
-font-size:14px;
-
-font-weight:bold;
-
-z-index:2;
-
-}
-
-/* MARQUEE */
-
-.marquee{
-
-white-space:nowrap;
-
-display:inline-block;
-
-padding-left:20px;
-
-animation:move 15s linear infinite;
-
-font-weight:bold;
-
-}
-
-@keyframes move{
-
-0%{
-transform:translateX(100%);
-}
-
-100%{
-transform:translateX(-100%);
-}
-
-}
-
-/* BD CLOCK */
-
-#bd-clock{
-
-position:absolute;
-
-right:12px;
-
-font-size:13px;
-
-font-weight:bold;
-
-color:white;
-
-background:rgba(0,0,0,0.25);
-
-padding:6px 12px;
-
-border-radius:20px;
-
-backdrop-filter:blur(8px);
-
-z-index:3;
-
-}
-
-/* LIVE TV BANNER */
-
-.live-banner{
-
-position:absolute;
-
-top:12px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-background:#ff0055;
-
-padding:8px 20px;
-
-border-radius:30px;
-
-font-size:14px;
-
-font-weight:bold;
-
-z-index:9999;
-
-box-shadow:0 0 15px #ff0055;
-
-}
-
-/* NAVBAR */
-
-.navbar{
-
-position:fixed;
-
-bottom:0;
-
-left:0;
-
-width:100%;
-
-height:70px;
-
-background:#091529;
-
-display:flex;
-
-justify-content:space-evenly;
-
-align-items:center;
-
-border-top:1px solid rgba(255,255,255,0.08);
-
-z-index:99999;
-
-}
-
-.nav{
-
-text-align:center;
-
-font-size:14px;
-
-color:#9aa8bb;
-
-}
-
-.active{
-
-color:#ff0055;
-
-}
-
-.icon{
-
-font-size:24px;
-
-display:block;
-
-margin-bottom:5px;
-
-}
-
-</style>
-
 <script>
 
-/* LIVE BD TIME */
+/* LOAD CHANNELS */
+
+fetch('channels.json')
+
+.then(res => res.json())
+
+.then(data => {
+
+window.allChannels = data.channels;
+
+loadChannels(data.channels);
+
+});
+
+/* SHOW CHANNELS */
+
+function loadChannels(channels){
+
+let html = "";
+
+channels.forEach(ch => {
+
+if(!ch.name || !ch.url) return;
+
+html += `
+
+<div class="card"
+
+onclick="playChannel('${ch.url}')">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2504/2504947.png">
+
+<h3>${ch.name}</h3>
+
+</div>
+
+`;
+
+});
+
+document.getElementById('channels').innerHTML = html;
+
+}
+
+/* PLAY CHANNEL */
+
+function playChannel(url){
+
+const video =
+document.getElementById('video');
+
+if(Hls.isSupported()){
+
+if(window.hls){
+window.hls.destroy();
+}
+
+const hls = new Hls({
+
+enableWorker:true,
+lowLatencyMode:true
+
+});
+
+window.hls = hls;
+
+hls.loadSource(url);
+
+hls.attachMedia(video);
+
+hls.on(Hls.Events.MANIFEST_PARSED,function(){
+
+video.play();
+
+});
+
+hls.on(Hls.Events.ERROR,function(event,data){
+
+console.log(data);
+
+});
+
+}else{
+
+video.src = url;
+
+video.play();
+
+}
+
+}
+
+/* SEARCH */
+
+document
+.getElementById('search')
+
+.addEventListener('keyup',function(){
+
+const value =
+this.value.toLowerCase();
+
+const filtered =
+window.allChannels.filter(ch =>
+
+ch.name.toLowerCase()
+.includes(value)
+
+);
+
+loadChannels(filtered);
+
+});
+
+/* BD LIVE TIME */
 
 function updateBDTime(){
 
@@ -256,6 +476,7 @@ now.toLocaleString('en-GB',options);
 
 document
 .getElementById('bd-clock')
+
 .innerHTML = bdTime;
 
 }
@@ -265,3 +486,6 @@ setInterval(updateBDTime,1000);
 updateBDTime();
 
 </script>
+
+</body>
+</html>
