@@ -6,6 +6,9 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -17,7 +20,6 @@ jobs:
       - name: Update Time
         run: |
           TIME=$(TZ='Asia/Dhaka' date '+%Y-%m-%d %I:%M %p')
-
           sed -i "5s|.*|# Last Updated: $TIME (BD Time)|" bd.m3u
 
       - name: Commit Changes
@@ -27,6 +29,6 @@ jobs:
 
           git add bd.m3u
 
-          git commit -m "Auto update bd.m3u time" || echo "No changes"
+          git commit -m "Auto update time" || echo "No changes"
 
           git push
