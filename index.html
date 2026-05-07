@@ -308,29 +308,79 @@ function updateClock(){
 
 const now = new Date();
 
-const bd =
+const days = [
+'রবিবার',
+'সোমবার',
+'মঙ্গলবার',
+'বুধবার',
+'বৃহস্পতিবার',
+'শুক্রবার',
+'শনিবার'
+];
+
+const months = [
+'জানুয়ারি',
+'ফেব্রুয়ারি',
+'মার্চ',
+'এপ্রিল',
+'মে',
+'জুন',
+'জুলাই',
+'আগস্ট',
+'সেপ্টেম্বর',
+'অক্টোবর',
+'নভেম্বর',
+'ডিসেম্বর'
+];
+
+const bdTime =
+new Date(
 now.toLocaleString(
-'en-GB',
+'en-US',
 {
-timeZone:'Asia/Dhaka',
-weekday:'short',
-day:'2-digit',
-month:'short',
-year:'numeric',
-hour:'2-digit',
-minute:'2-digit',
-second:'2-digit'
-});
+timeZone:'Asia/Dhaka'
+}
+)
+);
+
+let hour =
+bdTime.getHours();
+
+const minute =
+String(
+bdTime.getMinutes()
+).padStart(2,'0');
+
+const second =
+String(
+bdTime.getSeconds()
+).padStart(2,'0');
+
+const ampm =
+hour >= 12 ? 'PM' : 'AM';
+
+hour = hour % 12;
+
+hour = hour ? hour : 12;
+
+const day =
+days[bdTime.getDay()];
+
+const date =
+bdTime.getDate();
+
+const month =
+months[bdTime.getMonth()];
+
+const year =
+bdTime.getFullYear();
 
 document.getElementById(
 'clock'
-).innerHTML = bd;
+).innerHTML =
+`${day}, ${date} ${month} ${year} | ${hour}:${minute}:${second} ${ampm}`;
 
 }
-
-setInterval(updateClock,1000);
-
-updateClock();
 
 /* LOAD CHANNELS */
 
