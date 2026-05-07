@@ -680,6 +680,108 @@ ch.category.toLowerCase() === 'sport'
 loadChannels(filtered);
 
 }
+  let currentIndex = 0;
+
+/* REMOTE CONTROL */
+
+document.addEventListener(
+'keydown',
+function(e){
+
+const video =
+document.getElementById('video');
+
+/* CHANNEL DOWN */
+
+if(e.key === 'ArrowDown'){
+
+e.preventDefault();
+
+if(currentIndex <
+window.allChannels.length - 1){
+
+currentIndex++;
+
+const ch =
+window.allChannels[currentIndex];
+
+playChannel(
+ch.url,
+document.querySelectorAll('.card')[currentIndex]
+);
+
+}
+
+}
+
+/* CHANNEL UP */
+
+if(e.key === 'ArrowUp'){
+
+e.preventDefault();
+
+if(currentIndex > 0){
+
+currentIndex--;
+
+const ch =
+window.allChannels[currentIndex];
+
+playChannel(
+ch.url,
+document.querySelectorAll('.card')[currentIndex]
+);
+
+}
+
+}
+
+/* VOLUME UP */
+
+if(e.key === 'ArrowRight'){
+
+e.preventDefault();
+
+if(video.volume < 1){
+
+video.volume =
+Math.min(
+1,
+video.volume + 0.1
+);
+
+}
+
+}
+
+/* VOLUME DOWN */
+
+if(e.key === 'ArrowLeft'){
+
+e.preventDefault();
+
+if(video.volume > 0){
+
+video.volume =
+Math.max(
+0,
+video.volume - 0.1
+);
+
+}
+
+}
+
+/* MUTE */
+
+if(e.key === 'm'){
+
+video.muted =
+!video.muted;
+
+}
+
+});
 </script>
 
 </body>
