@@ -624,8 +624,12 @@ video.play();
 video.src = url;
 document.getElementById('loader')
 .style.display='none';
-video.play();
+video.play().then(()=>{
 
+document.getElementById('loader')
+.style.display='none';
+
+});
 }
 
 }
