@@ -207,7 +207,61 @@ color:#ff005c;
 font-weight:bold;
 border-top:1px solid rgba(255,255,255,0.08);
 }
+/* PC VERSION */
 
+@media(min-width:1024px){
+
+body{
+overflow:hidden;
+}
+
+.player-wrapper{
+width:70%;
+float:left;
+padding:15px;
+}
+
+.content{
+width:30%;
+float:right;
+height:calc(100vh - 120px);
+padding:15px;
+overflow-y:auto;
+}
+
+.player{
+height:420px;
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.card{
+min-height:170px;
+}
+
+.card img{
+width:90px;
+height:65px;
+}
+
+.section-title{
+font-size:18px;
+}
+
+.search{
+font-size:16px;
+padding:18px;
+}
+
+.footer{
+height:55px;
+font-size:16px;
+}
+
+}
 /* MOBILE */
 
 @media(max-width:768px){
