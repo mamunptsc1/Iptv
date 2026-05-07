@@ -290,6 +290,19 @@ font-size:16px;
 }
 
 }
+  #loader{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(0,0,0,0.7);
+padding:12px 20px;
+border-radius:12px;
+display:none;
+z-index:999;
+font-size:15px;
+color:#fff;
+  }
 /* MOBILE */
 
 @media(max-width:768px){
@@ -344,7 +357,10 @@ Loading...
 <div class="player-wrapper">
 
 <div class="player">
-
+<div id="loader">
+Loading Channel...
+</div>
+  
 <video
 id="video"
 controls
@@ -500,7 +516,32 @@ window.allChannels = data.channels;
 data.channels.length;
 
 loadChannels(data.channels);
+  const saved =
+localStorage.getItem('lastChannel');
 
+if(saved){
+
+setTimeout(()=>{
+
+playChannel(
+saved,
+document.querySelector('.card')
+);
+
+},1500);
+
+}
+setTimeout(()=>{
+
+const first =
+window.allChannels[0];
+
+playChannel(
+first.url,
+document.querySelectorAll('.card')[0]
+);
+
+},1000);
 });
 
 /* SHOW CHANNELS */
@@ -536,7 +577,12 @@ document.getElementById(
 /* PLAYER */
 
 function playChannel(url,card){
-
+  document.getElementById('loader')
+.style.display='block';
+localStorage.setItem(
+'lastChannel',
+url
+);
 const video =
 document.getElementById('video');
 
@@ -576,7 +622,8 @@ video.play();
 }else{
 
 video.src = url;
-
+document.getElementById('loader')
+.style.display='none';
 video.play();
 
 }
