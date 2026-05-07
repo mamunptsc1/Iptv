@@ -1,4 +1,324 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LIVE TV</title>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(180deg,#020b1c,#03142d);
+color:#fff;
+overflow:hidden;
+}
+
+/* TOPBAR */
+
+.topbar{
+height:55px;
+background:#ff005c;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 10px;
+font-size:12px;
+font-weight:bold;
+overflow:hidden;
+}
+
+.notice{
+background:#000;
+padding:18px;
+flex-shrink:0;
+font-size:14px;
+}
+
+.notice-text{
+flex:1;
+overflow:hidden;
+white-space:nowrap;
+position:relative;
+height:100%;
+display:flex;
+align-items:center;
+padding:0 10px;
+}
+
+.notice-text span{
+display:inline-block;
+padding-left:100%;
+animation:marquee 15s linear infinite;
+white-space:nowrap;
+}
+
+@keyframes marquee{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-100%);
+}
+}
+
+.clock{
+background:#b30044;
+padding:10px 14px;
+border-radius:30px;
+font-size:11px;
+white-space:nowrap;
+}
+
+/* PLAYER */
+
+.player-wrapper{
+width:100%;
+padding:12px;
+}
+
+.player{
+width:100%;
+height:240px;
+background:#000;
+border-radius:24px;
+overflow:hidden;
+box-shadow:
+0 0 25px rgba(255,0,92,0.25);
+}
+
+video{
+width:100%;
+height:100%;
+object-fit:contain;
+background:#000;
+outline:none;
+border:none;
+}
+
+/* CONTENT */
+
+.content{
+height:calc(100vh - 360px);
+overflow-y:auto;
+padding:15px;
+padding-bottom:120px;
+}
+
+/* TITLE */
+
+.section-title{
+font-size:15px;
+letter-spacing:6px;
+margin-bottom:18px;
+color:#9ba8c7;
+}
+
+/* CATEGORY */
+
+.category-bar{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+overflow-x:auto;
+}
+
+.category-btn{
+background:#081a34;
+padding:12px 18px;
+border-radius:14px;
+font-size:14px;
+border:1px solid rgba(255,255,255,0.05);
+white-space:nowrap;
+cursor:pointer;
+transition:0.3s;
+}
+
+.category-btn.active{
+background:#ff005c;
+color:#fff;
+box-shadow:0 0 15px rgba(255,0,92,0.5);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+/* CARD */
+
+.card{
+background:linear-gradient(180deg,#071427,#081a34);
+border-radius:18px;
+padding:14px 8px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.05);
+transition:0.3s;
+min-height:155px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 20px rgba(255,0,92,0.25);
+}
+
+.card.active{
+border:2px solid #ff005c;
+box-shadow:0 0 20px rgba(255,0,92,0.4);
+}
+
+.card img{
+width:75px;
+height:55px;
+object-fit:contain;
+margin-bottom:12px;
+border-radius:10px;
+background:#fff;
+padding:4px;
+}
+
+.card h3{
+font-size:14px;
+font-weight:500;
+line-height:20px;
+}
+
+/* FOOTER */
+
+.footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:65px;
+background:#04122a;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:15px;
+color:#ff005c;
+font-weight:bold;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+width:4px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#ff005c;
+border-radius:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+.player{
+height:220px;
+}
+
+.card{
+min-height:150px;
+}
+
+.card img{
+width:70px;
+height:50px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div class="notice">
+NOTICE
+</div>
+
+<div class="notice-text">
+<span>
+সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড সময় লাগতে পারে
+</span>
+</div>
+
+<div class="clock" id="clock">
+Loading...
+</div>
+
+</div>
+
+<!-- PLAYER -->
+
+<div class="player-wrapper">
+
+<div class="player">
+
+<video
+id="video"
+controls
+autoplay
+playsinline>
+</video>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<div class="section-title">
+PREMIUM TV CHANNELS
+</div>
+
+<!-- CATEGORY -->
+
+<div class="category-bar">
+
+<div class="category-btn active"
+onclick="filterCategory('all',this)">
+ALL (<span id="allCount">0</span>)
+</div>
+
 <div class="category-btn"
+onclick="filterCategory('bangla',this)">
+BANGLA
+</div>
+  <div class="category-btn"
 onclick="filterCategory('sport',this)">
 SPORT
 </div>
