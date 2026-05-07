@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,132 +18,95 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#081426;
-color:white;
+background:#020b1c;
+color:#fff;
 overflow:hidden;
 }
 
-/* TOPBAR */
+/* TOP BAR */
 
 .topbar{
-height:45px;
-background:#ff0055;
+height:50px;
+background:#ff005c;
 display:flex;
 align-items:center;
-overflow:hidden;
-position:relative;
-z-index:99999;
+justify-content:space-between;
+padding:0 10px;
+font-size:13px;
+font-weight:bold;
 }
 
 .notice{
-background:black;
+background:#000;
+padding:15px;
+margin-right:10px;
+}
+
+.clock{
+background:#b30044;
+padding:10px 14px;
+border-radius:30px;
+}
+
+/* LIVE BUTTON */
+
+.live-btn{
+width:180px;
+margin:12px auto;
+background:#ff005c;
 padding:14px;
-font-size:13px;
+border-radius:40px;
+text-align:center;
+font-size:30px;
 font-weight:bold;
-z-index:2;
+box-shadow:0 0 20px #ff005c;
 }
 
-.marquee{
-white-space:nowrap;
-display:inline-block;
-padding-left:20px;
-animation:move 15s linear infinite;
-font-size:13px;
-font-weight:bold;
-}
-
-@keyframes move{
-0%{
-transform:translateX(100%);
-}
-100%{
-transform:translateX(-100%);
-}
-}
-
-/* LIVE CLOCK */
-
-#bd-clock{
-position:absolute;
-right:10px;
-font-size:11px;
-font-weight:bold;
-background:rgba(0,0,0,0.25);
-padding:6px 10px;
-border-radius:20px;
-}
-
-/* VIDEO */
+/* PLAYER */
 
 .player{
-position:relative;
 width:100%;
-height:32vh;
-background:black;
+height:260px;
+background:#000;
 }
 
 video{
 width:100%;
 height:100%;
+background:#000;
 object-fit:cover;
-background:black;
-}
-
-/* LIVE BADGE */
-
-.live-banner{
-position:absolute;
-top:12px;
-left:50%;
-transform:translateX(-50%);
-background:#ff0055;
-padding:8px 18px;
-border-radius:30px;
-font-size:13px;
-font-weight:bold;
-z-index:9999;
-box-shadow:0 0 15px #ff0055;
 }
 
 /* CONTENT */
 
 .content{
-height:calc(100vh - 32vh - 115px);
+height:calc(100vh - 390px);
 overflow-y:auto;
-padding-bottom:90px;
+padding:15px;
+padding-bottom:120px;
 }
 
 /* TITLE */
 
-.section{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 18px 10px;
-}
-
-.title{
+.section-title{
 font-size:14px;
-letter-spacing:3px;
-color:#9db0ca;
-font-weight:bold;
+letter-spacing:4px;
+margin-bottom:15px;
+color:#9ba8c7;
 }
 
 /* SEARCH */
 
 .search{
-padding:0 15px 15px;
-}
-
-.search input{
 width:100%;
-padding:14px;
+padding:16px;
+background:#08152d;
 border:none;
+border-radius:16px;
+color:#fff;
+font-size:16px;
+margin-bottom:20px;
 outline:none;
-border-radius:15px;
-background:#13233d;
-color:white;
-font-size:15px;
 }
 
 /* GRID */
@@ -152,67 +114,59 @@ font-size:15px;
 .grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:14px;
-padding:15px;
+gap:15px;
 }
 
 /* CARD */
 
 .card{
-background:#13233d;
-border-radius:22px;
-padding:22px 10px;
+background:#0a1830;
+border-radius:20px;
+padding:25px 10px;
 text-align:center;
 border:1px solid rgba(255,255,255,0.06);
-transition:.3s;
+transition:0.3s;
 }
 
 .card:hover{
 transform:scale(1.03);
-border-color:#ff0055;
+box-shadow:0 0 20px rgba(255,0,92,0.4);
 }
 
 .card img{
-width:65px;
-height:65px;
+width:70px;
+height:70px;
 object-fit:contain;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 .card h3{
-font-size:14px;
+font-size:17px;
 }
 
-/* NAVBAR */
+/* NAV */
 
-.navbar{
+.nav{
 position:fixed;
 bottom:0;
 left:0;
 width:100%;
-height:70px;
-background:#091529;
+height:80px;
+background:#04122a;
 display:flex;
-justify-content:space-evenly;
+justify-content:space-around;
 align-items:center;
 border-top:1px solid rgba(255,255,255,0.08);
-z-index:99999;
 }
 
-.nav{
+.nav-item{
 text-align:center;
-font-size:13px;
-color:#9aa8bb;
+font-size:15px;
+color:#888;
 }
 
 .active{
-color:#ff0055;
-}
-
-.icon{
-font-size:23px;
-display:block;
-margin-bottom:4px;
+color:#ff005c;
 }
 
 /* SCROLL */
@@ -222,26 +176,8 @@ width:5px;
 }
 
 ::-webkit-scrollbar-thumb{
-background:#ff0055;
+background:#ff005c;
 border-radius:20px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.player{
-height:28vh;
-}
-
-.content{
-height:calc(100vh - 28vh - 115px);
-}
-
-.grid{
-grid-template-columns:repeat(2,1fr);
-}
-
 }
 
 </style>
@@ -249,7 +185,7 @@ grid-template-columns:repeat(2,1fr);
 
 <body>
 
-<!-- TOPBAR -->
+<!-- TOP -->
 
 <div class="topbar">
 
@@ -257,27 +193,31 @@ grid-template-columns:repeat(2,1fr);
 NOTICE
 </div>
 
-<div class="marquee">
-সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড সময় লাগতে পারে
+<div>
+সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড লাগতে পারে
 </div>
 
-<div id="bd-clock"></div>
+<div class="clock" id="clock">
+Loading...
+</div>
 
 </div>
 
-<!-- VIDEO PLAYER -->
+<!-- LIVE -->
 
-<div class="player">
-
-<div class="live-banner">
+<div class="live-btn">
 🔴 LIVE TV
 </div>
+
+<!-- PLAYER -->
+
+<div class="player">
 
 <video
 id="video"
 controls
-playsinline
-controlsList="nodownload">
+autoplay
+playsinline>
 </video>
 
 </div>
@@ -286,26 +226,15 @@ controlsList="nodownload">
 
 <div class="content">
 
-<div class="section">
-
-<div class="title">
+<div class="section-title">
 PREMIUM TV CHANNELS
 </div>
 
-</div>
-
-<!-- SEARCH -->
-
-<div class="search">
-
 <input
 type="text"
+class="search"
 id="search"
 placeholder="Search channels...">
-
-</div>
-
-<!-- CHANNEL GRID -->
 
 <div class="grid"
 id="channels">
@@ -313,31 +242,57 @@ id="channels">
 
 </div>
 
-<!-- NAVBAR -->
-
-<div class="navbar">
+<!-- NAV -->
 
 <div class="nav">
-<span class="icon">🏠</span>
-HOME
+
+<div class="nav-item">
+🏠<br>HOME
 </div>
 
-<div class="nav active">
-<span class="icon">📺</span>
-LIVE TV
+<div class="nav-item active">
+📺<br>LIVE TV
 </div>
 
 </div>
 
 <script>
 
-/* LOAD CHANNELS */
+/* CLOCK */
+
+function updateClock(){
+
+const now = new Date();
+
+const bd = now.toLocaleString(
+'en-GB',
+{
+timeZone:'Asia/Dhaka',
+weekday:'short',
+day:'2-digit',
+month:'short',
+year:'numeric',
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+});
+
+document.getElementById(
+'clock'
+).innerHTML = bd;
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+/* LOAD JSON */
 
 fetch('channels.json')
 
-.then(res => res.json())
+.then(res=>res.json())
 
-.then(data => {
+.then(data=>{
 
 window.allChannels = data.channels;
 
@@ -349,19 +304,16 @@ loadChannels(data.channels);
 
 function loadChannels(channels){
 
-let html = "";
+let html='';
 
-channels.forEach(ch => {
-
-if(!ch.name || !ch.url) return;
+channels.forEach(ch=>{
 
 html += `
 
 <div class="card"
-
 onclick="playChannel('${ch.url}')">
 
-<img src="https://cdn-icons-png.flaticon.com/512/2504/2504947.png">
+<img src="https://cdn-icons-png.flaticon.com/512/2451/2451542.png">
 
 <h3>${ch.name}</h3>
 
@@ -371,11 +323,12 @@ onclick="playChannel('${ch.url}')">
 
 });
 
-document.getElementById('channels').innerHTML = html;
-
+document.getElementById(
+'channels'
+).innerHTML = html;
 }
 
-/* PLAY CHANNEL */
+/* PLAYER */
 
 function playChannel(url){
 
@@ -388,12 +341,7 @@ if(window.hls){
 window.hls.destroy();
 }
 
-const hls = new Hls({
-
-enableWorker:true,
-lowLatencyMode:true
-
-});
+const hls = new Hls();
 
 window.hls = hls;
 
@@ -401,15 +349,11 @@ hls.loadSource(url);
 
 hls.attachMedia(video);
 
-hls.on(Hls.Events.MANIFEST_PARSED,function(){
+hls.on(
+Hls.Events.MANIFEST_PARSED,
+function(){
 
 video.play();
-
-});
-
-hls.on(Hls.Events.ERROR,function(event,data){
-
-console.log(data);
 
 });
 
@@ -418,9 +362,7 @@ console.log(data);
 video.src = url;
 
 video.play();
-
 }
-
 }
 
 /* SEARCH */
@@ -428,13 +370,15 @@ video.play();
 document
 .getElementById('search')
 
-.addEventListener('keyup',function(){
+.addEventListener('keyup',
+
+function(){
 
 const value =
 this.value.toLowerCase();
 
 const filtered =
-window.allChannels.filter(ch =>
+window.allChannels.filter(ch=>
 
 ch.name.toLowerCase()
 .includes(value)
@@ -444,46 +388,6 @@ ch.name.toLowerCase()
 loadChannels(filtered);
 
 });
-
-/* BD LIVE TIME */
-
-function updateBDTime(){
-
-const now = new Date();
-
-const options = {
-
-timeZone:'Asia/Dhaka',
-
-weekday:'short',
-
-day:'2-digit',
-
-month:'short',
-
-year:'numeric',
-
-hour:'2-digit',
-
-minute:'2-digit',
-
-second:'2-digit'
-
-};
-
-const bdTime =
-now.toLocaleString('en-GB',options);
-
-document
-.getElementById('bd-clock')
-
-.innerHTML = bdTime;
-
-}
-
-setInterval(updateBDTime,1000);
-
-updateBDTime();
 
 </script>
 
