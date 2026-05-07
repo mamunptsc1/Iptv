@@ -424,7 +424,7 @@ updateClock();
 
 /* LOAD CHANNELS */
 
-fetch('channels.json')
+fetch('/channels.json')
 
 .then(res => res.json())
 
@@ -452,7 +452,7 @@ channels.forEach((ch,index) => {
 html += 
 
 <div class="card"
-onclick="playChannel('${ch.url}',this)">
+onclick="playChannel('${ch.url}', this)">
 
 <img
 src="${ch.logo || 'https://i.ibb.co/3k5p1t4/live-icon.png'}"
