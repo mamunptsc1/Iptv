@@ -339,7 +339,7 @@ PREMIUM TV CHANNELS
 
 <div class="category-btn active"
 onclick="filterCategory('all',this)">
-ALL
+ALL (<span id="allCount">0</span>)
 </div>
 
 <div class="category-btn"
@@ -466,6 +466,10 @@ fetch('channels.json')
 .then(data => {
 
 window.allChannels = data.channels;
+  document.getElementById(
+'allCount'
+).innerText =
+data.channels.length;
 
 loadChannels(data.channels);
 
