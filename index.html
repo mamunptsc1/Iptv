@@ -113,13 +113,20 @@ padding-bottom:4px;
 video{
 width:100%;
 height:100%;
-object-fit:contain;
+object-fit:cover;
 background:#000;
 border-radius:28px;
 outline:none;
 border:none;
 }
 
+video:fullscreen{
+object-fit:contain;
+}
+
+video:-webkit-full-screen{
+object-fit:contain;
+}
 /* CONTENT */
 
 .content{
@@ -364,10 +371,20 @@ background:#000;
   video{
 width:100%;
 height:100%;
-object-fit:contain;
+object-fit:cover;
 background:#000;
 border-radius:28px;
-  }
+outline:none;
+border:none;
+}
+
+video:fullscreen{
+object-fit:contain;
+}
+
+video:-webkit-full-screen{
+object-fit:contain;
+}
 
 .grid{
 grid-template-columns:repeat(3,1fr);
