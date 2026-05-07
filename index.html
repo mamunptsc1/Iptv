@@ -20,11 +20,37 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(180deg,#020b1c,#03142d);
+background:
+linear-gradient(
+135deg,
+#050816,
+#071b3a,
+#0a234d
+);
+
+background-size:400% 400%;
+
+animation:bgmove 15s ease infinite;
+
 color:#fff;
+
 overflow:hidden;
 }
+@keyframes bgmove{
 
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
 /* TOPBAR */
 
 .topbar{
@@ -119,6 +145,8 @@ height:calc(100vh - 360px);
 overflow-y:auto;
 padding:15px;
 padding-bottom:120px;
+  backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
 }
 
 /* TITLE */
@@ -202,8 +230,17 @@ cursor:pointer;
 }
 
 .card:hover{
-transform:translateY(-4px);
-box-shadow:0 0 20px rgba(255,0,92,0.25);
+
+transform:
+translateY(-6px)
+scale(1.02);
+
+box-shadow:
+0 0 25px rgba(255,0,120,0.35);
+
+border:
+1px solid rgba(255,255,255,0.18);
+
 }
 
 .card.active{
