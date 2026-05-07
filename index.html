@@ -575,24 +575,18 @@ document.getElementById(
 }
 
 /* PLAYER */
-
 function playChannel(url,card){
-  document.getElementById('loader')
-.style.display='block';
+
 localStorage.setItem(
 'lastChannel',
 url
 );
+
 const video =
 document.getElementById('video');
 
-document
-.querySelectorAll('.card')
-.forEach(c=>{
-c.classList.remove('active');
-});
-
-card.classList.add('active');
+document.getElementById('loader')
+.style.display='block';
 
 if(Hls.isSupported()){
 
@@ -601,8 +595,10 @@ window.hls.destroy();
 }
 
 const hls = new Hls({
+
 enableWorker:true,
 lowLatencyMode:true
+
 });
 
 window.hls = hls;
@@ -617,23 +613,36 @@ function(){
 
 video.play();
 
+document.getElementById('loader')
+.style.display='none';
+
+});
+
+hls.on(
+Hls.Events.ERROR,
+function(){
+
+document.getElementById('loader')
+.style.display='none';
+
 });
 
 }else{
 
 video.src = url;
-document.getElementById('loader')
-.style.display='none';
-video.play().then(()=>{
+
+video.onloadedmetadata = function(){
+
+video.play();
 
 document.getElementById('loader')
 .style.display='none';
 
-});
-}
+};
 
 }
 
+}
 /* SEARCH */
 
 document
