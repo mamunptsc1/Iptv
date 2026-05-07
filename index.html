@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LIVEFY TV</title>
+<title>LIVE TV</title>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -28,7 +25,7 @@ overflow:hidden;
 /* TOPBAR */
 
 .topbar{
-height:52px;
+height:55px;
 background:#ff005c;
 display:flex;
 align-items:center;
@@ -41,8 +38,9 @@ overflow:hidden;
 
 .notice{
 background:#000;
-padding:16px;
+padding:18px;
 flex-shrink:0;
+font-size:14px;
 }
 
 .notice-text{
@@ -50,6 +48,7 @@ white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis;
 padding:0 10px;
+font-size:14px;
 }
 
 .clock{
@@ -63,32 +62,17 @@ white-space:nowrap;
 /* PLAYER */
 
 .player-wrapper{
-position:relative;
 width:100%;
 padding:12px;
 }
 
-.live-btn{
-position:absolute;
-top:24px;
-left:50%;
-transform:translateX(-50%);
-background:#ff005c;
-padding:12px 28px;
-border-radius:40px;
-font-size:20px;
-font-weight:bold;
-z-index:999;
-box-shadow:0 0 20px #ff005c;
-}
-
 .player{
 width:100%;
-height:210px;
+height:220px;
 background:#000;
 border-radius:22px;
 overflow:hidden;
-box-shadow:0 0 25px rgba(255,0,92,0.25);
+box-shadow:0 0 25px rgba(255,0,92,0.2);
 }
 
 video{
@@ -101,60 +85,69 @@ background:#000;
 /* CONTENT */
 
 .content{
-height:calc(100vh - 360px);
+height:calc(100vh - 365px);
 overflow-y:auto;
-padding:18px;
+padding:15px;
 padding-bottom:120px;
 }
 
 /* TITLE */
 
 .section-title{
-font-size:14px;
+font-size:15px;
 letter-spacing:6px;
 margin-bottom:18px;
 color:#9ba8c7;
-padding-left:4px;
 }
 
-/* SEARCH */
+/* CATEGORY */
 
-.search{
-width:100%;
-padding:18px;
-background:#08152d;
-border:none;
-border-radius:18px;
+.category-bar{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+overflow-x:auto;
+}
+
+.category-btn{
+background:#081a34;
+padding:12px 18px;
+border-radius:14px;
+font-size:14px;
+border:1px solid rgba(255,255,255,0.05);
+white-space:nowrap;
+cursor:pointer;
+transition:0.3s;
+}
+
+.category-btn.active{
+background:#ff005c;
 color:#fff;
-font-size:18px;
-margin-bottom:22px;
-outline:none;
+box-shadow:0 0 15px rgba(255,0,92,0.5);
 }
 
 /* GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:16px;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
 }
 
 /* CARD */
 
 .card{
 background:linear-gradient(180deg,#071427,#081a34);
-border-radius:22px;
-padding:20px 10px;
+border-radius:18px;
+padding:14px 8px;
 text-align:center;
-border:1px solid rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.05);
 transition:0.3s;
-min-height:190px;
+min-height:155px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-box-shadow:0 0 15px rgba(0,0,0,0.25);
-cursor:pointer;
 }
 
 .card:hover{
@@ -163,51 +156,43 @@ box-shadow:0 0 20px rgba(255,0,92,0.25);
 }
 
 .card img{
-width:95px;
-height:65px;
+width:75px;
+height:55px;
 object-fit:contain;
-margin-bottom:16px;
-border-radius:12px;
+margin-bottom:12px;
+border-radius:10px;
 background:#fff;
-padding:5px;
+padding:4px;
 }
 
 .card h3{
-font-size:15px;
+font-size:14px;
 font-weight:500;
-line-height:22px;
-color:#fff;
+line-height:20px;
 }
 
-/* NAV */
+/* FOOTER */
 
-.nav{
+.footer{
 position:fixed;
 bottom:0;
 left:0;
 width:100%;
-height:85px;
+height:65px;
 background:#04122a;
 display:flex;
-justify-content:space-around;
 align-items:center;
-border-top:1px solid rgba(255,255,255,0.08);
-}
-
-.nav-item{
-text-align:center;
+justify-content:center;
 font-size:15px;
-color:#8ea2c8;
-}
-
-.active{
 color:#ff005c;
+font-weight:bold;
+border-top:1px solid rgba(255,255,255,0.08);
 }
 
 /* SCROLL */
 
 ::-webkit-scrollbar{
-width:5px;
+width:4px;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -219,23 +204,26 @@ border-radius:20px;
 
 @media(max-width:768px){
 
+.grid{
+grid-template-columns:repeat(3,1fr);
+}
+
 .player{
 height:210px;
 }
 
-.grid{
-grid-template-columns:repeat(2,1fr);
-gap:16px;
+.card{
+min-height:150px;
 }
 
-.card{
-min-height:190px;
+.card img{
+width:70px;
+height:50px;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -262,18 +250,13 @@ Loading...
 
 <div class="player-wrapper">
 
-<div class="live-btn">
-⚪ LIVE TV
-</div>
-
 <div class="player">
 
 <video
 id="video"
 controls
 autoplay
-playsinline
-preload="none">
+playsinline>
 </video>
 
 </div>
@@ -288,11 +271,25 @@ preload="none">
 PREMIUM TV CHANNELS
 </div>
 
-<input
-type="text"
-class="search"
-id="search"
-placeholder="🔍 Search channels...">
+<!-- CATEGORY -->
+
+<div class="category-bar">
+
+<div class="category-btn active">
+ALL (120)
+</div>
+
+<div class="category-btn">
+BANGLA
+</div>
+
+<div class="category-btn">
+SPORT
+</div>
+
+</div>
+
+<!-- CHANNEL GRID -->
 
 <div class="grid"
 id="channels">
@@ -300,18 +297,10 @@ id="channels">
 
 </div>
 
-<!-- NAV -->
+<!-- FOOTER -->
 
-<div class="nav">
-
-<div class="nav-item active">
-🏠<br>HOME
-</div>
-
-<div class="nav-item">
-📺<br>LIVE TV
-</div>
-
+<div class="footer">
+MADE BY MD MAMUNUR RASHID
 </div>
 
 <script>
@@ -356,14 +345,6 @@ window.allChannels = data.channels;
 
 loadChannels(data.channels);
 
-})
-
-.catch(err=>{
-
-document.getElementById('channels')
-.innerHTML =
-'<h2 style="padding:20px">channels.json not found</h2>';
-
 });
 
 /* SHOW CHANNELS */
@@ -379,10 +360,8 @@ html += `
 <div class="card"
 onclick="playChannel('${ch.url}')">
 
-<img
-loading="lazy"
-src="${ch.logo || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}"
-onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'">
+<img src="${ch.logo || 'https://i.ibb.co/3k5p1t4/live-icon.png'}"
+onerror="this.src='https://i.ibb.co/3k5p1t4/live-icon.png'">
 
 <h3>${ch.name}</h3>
 
@@ -429,13 +408,6 @@ video.play();
 
 });
 
-hls.on(Hls.Events.ERROR,
-function(){
-
-console.log("Stream Error");
-
-});
-
 }else{
 
 video.src = url;
@@ -444,32 +416,7 @@ video.play();
 }
 }
 
-/* SEARCH */
-
-document
-.getElementById('search')
-
-.addEventListener('keyup',
-
-function(){
-
-const value =
-this.value.toLowerCase();
-
-const filtered =
-window.allChannels.filter(ch=>
-
-ch.name.toLowerCase()
-.includes(value)
-
-);
-
-loadChannels(filtered);
-
-});
-
 </script>
 
 </body>
-
 </html>
