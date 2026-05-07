@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LIVE TV</title>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -44,11 +47,30 @@ font-size:14px;
 }
 
 .notice-text{
-white-space:nowrap;
+flex:1;
 overflow:hidden;
-text-overflow:ellipsis;
+white-space:nowrap;
+position:relative;
+height:100%;
+display:flex;
+align-items:center;
 padding:0 10px;
-font-size:14px;
+}
+
+.notice-text span{
+display:inline-block;
+padding-left:100%;
+animation:marquee 15s linear infinite;
+white-space:nowrap;
+}
+
+@keyframes marquee{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-100%);
+}
 }
 
 .clock{
@@ -68,11 +90,13 @@ padding:12px;
 
 .player{
 width:100%;
-height:220px;
+height:230px;
 background:#000;
-border-radius:22px;
+border-radius:24px;
 overflow:hidden;
-box-shadow:0 0 25px rgba(255,0,92,0.2);
+box-shadow:
+0 0 30px rgba(255,0,92,0.25);
+position:relative;
 }
 
 video{
@@ -80,12 +104,14 @@ width:100%;
 height:100%;
 object-fit:cover;
 background:#000;
+outline:none;
+border:none;
 }
 
 /* CONTENT */
 
 .content{
-height:calc(100vh - 365px);
+height:calc(100vh - 360px);
 overflow-y:auto;
 padding:15px;
 padding-bottom:120px;
@@ -209,7 +235,7 @@ grid-template-columns:repeat(3,1fr);
 }
 
 .player{
-height:210px;
+height:220px;
 }
 
 .card{
@@ -224,6 +250,7 @@ height:50px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -237,7 +264,9 @@ NOTICE
 </div>
 
 <div class="notice-text">
+<span>
 সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড সময় লাগতে পারে
+</span>
 </div>
 
 <div class="clock" id="clock">
@@ -275,21 +304,24 @@ PREMIUM TV CHANNELS
 
 <div class="category-bar">
 
-<div class="category-btn active">
-ALL (120)
+<div class="category-btn active"
+onclick="filterCategory('all',this)">
+ALL (<span id="allCount">0</span>)
 </div>
 
-<div class="category-btn">
+<div class="category-btn"
+onclick="filterCategory('bangla',this)">
 BANGLA
 </div>
 
-<div class="category-btn">
+<div class="category-btn"
+onclick="filterCategory('sport',this)">
 SPORT
 </div>
 
 </div>
 
-<!-- CHANNEL GRID -->
+<!-- CHANNELS -->
 
 <div class="grid"
 id="channels">
@@ -311,22 +343,75 @@ function updateClock(){
 
 const now = new Date();
 
-const bd = now.toLocaleString(
-'en-GB',
-{
-timeZone:'Asia/Dhaka',
-weekday:'short',
-day:'2-digit',
-month:'short',
-year:'numeric',
-hour:'2-digit',
-minute:'2-digit',
-second:'2-digit'
-});
+const days = [
+'রবিবার',
+'সোমবার',
+'মঙ্গলবার',
+'বুধবার',
+'বৃহস্পতিবার',
+'শুক্রবার',
+'শনিবার'
+];
+
+const months = [
+'জানুয়ারি',
+'ফেব্রুয়ারি',
+'মার্চ',
+'এপ্রিল',
+'মে',
+'জুন',
+'জুলাই',
+'আগস্ট',
+'সেপ্টেম্বর',
+'অক্টোবর',
+'নভেম্বর',
+'ডিসেম্বর'
+];
+
+const bdTime =
+new Date(
+now.toLocaleString(
+'en-US',
+{timeZone:'Asia/Dhaka'}
+)
+);
+
+let hour = bdTime.getHours();
+
+const minute =
+String(
+bdTime.getMinutes()
+).padStart(2,'0');
+
+const second =
+String(
+bdTime.getSeconds()
+).padStart(2,'0');
+
+const ampm =
+hour >= 12 ? 'PM' : 'AM';
+
+hour = hour % 12;
+
+hour = hour ? hour : 12;
+
+const day =
+days[bdTime.getDay()];
+
+const date =
+bdTime.getDate();
+
+const month =
+months[bdTime.getMonth()];
+
+const year =
+bdTime.getFullYear();
 
 document.getElementById(
 'clock'
-).innerHTML = bd;
+).innerHTML =
+`${day}, ${date} ${month} ${year}, ${hour}:${minute}:${second} ${ampm}`;
+
 }
 
 setInterval(updateClock,1000);
@@ -344,6 +429,11 @@ fetch('channels.json')
 window.allChannels = data.channels;
 
 loadChannels(data.channels);
+
+document.getElementById(
+'allCount'
+).innerText =
+data.channels.length;
 
 });
 
@@ -374,6 +464,54 @@ onerror="this.src='https://i.ibb.co/3k5p1t4/live-icon.png'">
 document.getElementById(
 'channels'
 ).innerHTML = html;
+}
+
+/* CATEGORY FILTER */
+
+function filterCategory(type,el){
+
+document
+.querySelectorAll('.category-btn')
+.forEach(btn=>{
+btn.classList.remove('active');
+});
+
+el.classList.add('active');
+
+let filtered = [];
+
+if(type === 'all'){
+
+filtered = window.allChannels;
+
+}
+
+else if(type === 'bangla'){
+
+filtered =
+window.allChannels.filter(ch=>
+
+ch.category &&
+ch.category.toLowerCase() === 'bangla'
+
+);
+
+}
+
+else if(type === 'sport'){
+
+filtered =
+window.allChannels.filter(ch=>
+
+ch.category &&
+ch.category.toLowerCase() === 'sport'
+
+);
+
+}
+
+loadChannels(filtered);
+
 }
 
 /* PLAYER */
