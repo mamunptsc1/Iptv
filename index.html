@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,7 +25,21 @@ color:#fff;
 overflow:hidden;
 }
 
-/* TOP BAR */
+/* LIVE TV TOP */
+
+.live-btn{
+width:190px;
+margin:10px auto;
+background:#ff005c;
+padding:14px;
+border-radius:40px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+box-shadow:0 0 20px #ff005c;
+}
+
+/* TOPBAR */
 
 .topbar{
 height:50px;
@@ -31,42 +47,38 @@ background:#ff005c;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 10px;
-font-size:13px;
+padding:0 8px;
+font-size:12px;
 font-weight:bold;
+overflow:hidden;
 }
 
 .notice{
 background:#000;
 padding:15px;
-margin-right:10px;
+flex-shrink:0;
+}
+
+.notice-text{
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+padding:0 10px;
 }
 
 .clock{
 background:#b30044;
-padding:10px 14px;
+padding:10px 12px;
 border-radius:30px;
-}
-
-/* LIVE BUTTON */
-
-.live-btn{
-width:180px;
-margin:12px auto;
-background:#ff005c;
-padding:14px;
-border-radius:40px;
-text-align:center;
-font-size:30px;
-font-weight:bold;
-box-shadow:0 0 20px #ff005c;
+font-size:11px;
+white-space:nowrap;
 }
 
 /* PLAYER */
 
 .player{
 width:100%;
-height:260px;
+height:250px;
 background:#000;
 }
 
@@ -169,7 +181,7 @@ color:#888;
 color:#ff005c;
 }
 
-/* SCROLL */
+/* SCROLLBAR */
 
 ::-webkit-scrollbar{
 width:5px;
@@ -180,12 +192,42 @@ background:#ff005c;
 border-radius:20px;
 }
 
+/* MOBILE */
+
+@media(max-width:768px){
+
+.player{
+height:230px;
+}
+
+.card{
+padding:22px 8px;
+}
+
+.card h3{
+font-size:15px;
+}
+
+.live-btn{
+font-size:24px;
+width:170px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<!-- TOP -->
+<!-- LIVE TV -->
+
+<div class="live-btn">
+🔴 LIVE TV
+</div>
+
+<!-- NOTICE -->
 
 <div class="topbar">
 
@@ -193,20 +235,14 @@ border-radius:20px;
 NOTICE
 </div>
 
-<div>
-সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড লাগতে পারে
+<div class="notice-text">
+সব চ্যানেল লোড হতে ১০-১৫ সেকেন্ড সময় লাগতে পারে
 </div>
 
 <div class="clock" id="clock">
 Loading...
 </div>
 
-</div>
-
-<!-- LIVE -->
-
-<div class="live-btn">
-🔴 LIVE TV
 </div>
 
 <!-- PLAYER -->
@@ -242,7 +278,7 @@ id="channels">
 
 </div>
 
-<!-- NAV -->
+<!-- BOTTOM NAV -->
 
 <div class="nav">
 
@@ -286,13 +322,13 @@ setInterval(updateClock,1000);
 
 updateClock();
 
-/* LOAD JSON */
+/* LOAD CHANNELS */
 
 fetch('channels.json')
 
-.then(res=>res.json())
+.then(res => res.json())
 
-.then(data=>{
+.then(data => {
 
 window.allChannels = data.channels;
 
@@ -304,9 +340,11 @@ loadChannels(data.channels);
 
 function loadChannels(channels){
 
-let html='';
+let html = '';
 
-channels.forEach(ch=>{
+channels.forEach(ch => {
+
+if(!ch.name || !ch.url) return;
 
 html += `
 
@@ -328,7 +366,7 @@ document.getElementById(
 ).innerHTML = html;
 }
 
-/* PLAYER */
+/* PLAY CHANNEL */
 
 function playChannel(url){
 
@@ -341,7 +379,10 @@ if(window.hls){
 window.hls.destroy();
 }
 
-const hls = new Hls();
+const hls = new Hls({
+enableWorker:true,
+lowLatencyMode:true
+});
 
 window.hls = hls;
 
@@ -354,6 +395,14 @@ Hls.Events.MANIFEST_PARSED,
 function(){
 
 video.play();
+
+});
+
+hls.on(
+Hls.Events.ERROR,
+function(event,data){
+
+console.log(data);
 
 });
 
@@ -378,9 +427,10 @@ const value =
 this.value.toLowerCase();
 
 const filtered =
-window.allChannels.filter(ch=>
+window.allChannels.filter(ch =>
 
-ch.name.toLowerCase()
+ch.name
+.toLowerCase()
 .includes(value)
 
 );
