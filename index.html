@@ -90,22 +90,61 @@ padding:12px;
 
 .player{
 width:100%;
-height:230px;
+height:240px;
 background:#000;
 border-radius:24px;
 overflow:hidden;
-box-shadow:
-0 0 30px rgba(255,0,92,0.25);
 position:relative;
+box-shadow:
+0 0 35px rgba(255,0,92,0.35);
+border:2px solid rgba(255,255,255,0.05);
 }
 
 video{
 width:100%;
 height:100%;
-object-fit:cover;
+object-fit:contain;
 background:#000;
 outline:none;
 border:none;
+}
+
+video::-webkit-media-controls{
+filter:
+brightness(1.15)
+contrast(1.1)
+saturate(1.2);
+}
+
+.player::after{
+content:'';
+position:absolute;
+inset:0;
+pointer-events:none;
+border-radius:24px;
+box-shadow:
+inset 0 0 40px rgba(255,255,255,0.04);
+}
+
+video:fullscreen{
+background:#000;
+object-fit:contain;
+}
+
+video:-webkit-full-screen{
+background:#000;
+object-fit:contain;
+}
+
+.card.active-card{
+
+border:2px solid #ff005c;
+
+box-shadow:
+0 0 25px rgba(255,0,92,0.45);
+
+transform:scale(1.03);
+
 }
 
 /* CONTENT */
@@ -443,12 +482,12 @@ function loadChannels(channels){
 
 let html = '';
 
-channels.forEach(ch => {
+channels.forEach((ch,index) => {
 
 html += `
 
 <div class="card"
-onclick="playChannel('${ch.url}')">
+onclick="playChannel('${ch.url}',${index})"
 
 <img src="${ch.logo || 'https://i.ibb.co/3k5p1t4/live-icon.png'}"
 onerror="this.src='https://i.ibb.co/3k5p1t4/live-icon.png'">
@@ -516,10 +555,25 @@ loadChannels(filtered);
 
 /* PLAYER */
 
-function playChannel(url){
+let currentIndex = 0;
+
+function playChannel(url,index){
+
+currentIndex = index;
 
 const video =
 document.getElementById('video');
+
+document
+.querySelectorAll('.card')
+.forEach(card=>{
+card.classList.remove('active-card');
+});
+
+document
+.querySelectorAll('.card')
+[index]
+.classList.add('active-card');
 
 if(Hls.isSupported()){
 
@@ -528,8 +582,21 @@ window.hls.destroy();
 }
 
 const hls = new Hls({
+
 enableWorker:true,
-lowLatencyMode:true
+
+lowLatencyMode:true,
+
+backBufferLength:90,
+
+maxBufferLength:120,
+
+liveSyncDurationCount:3,
+
+capLevelToPlayerSize:true,
+
+startLevel:-1
+
 });
 
 window.hls = hls;
@@ -546,14 +613,128 @@ video.play();
 
 });
 
+hls.on(
+Hls.Events.ERROR,
+function(event,data){
+
+if(data.fatal){
+
+switch(data.type){
+
+case Hls.ErrorTypes.NETWORK_ERROR:
+
+hls.startLoad();
+break;
+
+case Hls.ErrorTypes.MEDIA_ERROR:
+
+hls.recoverMediaError();
+break;
+
+default:
+
+hls.destroy();
+break;
+
+}
+}
+
+});
+
 }else{
 
 video.src = url;
 
 video.play();
 }
+
+}
+  document.addEventListener(
+'keydown',
+function(e){
+
+if(e.key === 'ArrowDown'){
+
+e.preventDefault();
+
+if(currentIndex <
+window.allChannels.length-1){
+
+currentIndex++;
+
+const ch =
+window.allChannels[currentIndex];
+
+playChannel(
+ch.url,
+currentIndex
+);
+
 }
 
+}
+
+if(e.key === 'ArrowUp'){
+
+e.preventDefault();
+
+if(currentIndex > 0){
+
+currentIndex--;
+
+const ch =
+window.allChannels[currentIndex];
+
+playChannel(
+ch.url,
+currentIndex
+);
+
+}
+
+}
+
+if(e.key === 'ArrowRight'){
+
+e.preventDefault();
+
+const video =
+document.getElementById('video');
+
+if(video.volume < 1){
+
+video.volume += 0.1;
+
+}
+
+}
+
+if(e.key === 'ArrowLeft'){
+
+e.preventDefault();
+
+const video =
+document.getElementById('video');
+
+if(video.volume > 0){
+
+video.volume -= 0.1;
+
+}
+
+}
+
+if(e.key === 'm'){
+
+const video =
+document.getElementById('video');
+
+video.muted =
+!video.muted;
+
+}
+
+});
 </script>
 
 </body>
