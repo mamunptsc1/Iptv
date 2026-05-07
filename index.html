@@ -341,51 +341,7 @@ PREMIUM TV CHANNELS
 onclick="filterCategory('all',this)">
 ALL
 </div>
-function filterCategory(type,el){
 
-document
-.querySelectorAll('.category-btn')
-.forEach(btn=>{
-btn.classList.remove('active');
-});
-
-el.classList.add('active');
-
-let filtered = [];
-
-if(type === 'all'){
-
-filtered = window.allChannels;
-
-}
-
-else if(type === 'bangla'){
-
-filtered =
-window.allChannels.filter(ch=>
-
-ch.category &&
-ch.category.toLowerCase() === 'bangla'
-
-);
-
-}
-
-else if(type === 'sport'){
-
-filtered =
-window.allChannels.filter(ch=>
-
-ch.category &&
-ch.category.toLowerCase() === 'sport'
-
-);
-
-}
-
-loadChannels(filtered);
-
-}
 <div class="category-btn"
 onclick="filterCategory('bangla',this)">
 BANGLA
@@ -647,7 +603,51 @@ video.volume -= 0.1;
 }
 
 });
+function filterCategory(type,el){
 
+document
+.querySelectorAll('.category-btn')
+.forEach(btn=>{
+btn.classList.remove('active');
+});
+
+el.classList.add('active');
+
+let filtered = [];
+
+if(type === 'all'){
+
+filtered = window.allChannels;
+
+}
+
+else if(type === 'bangla'){
+
+filtered =
+window.allChannels.filter(ch=>
+
+ch.category &&
+ch.category.toLowerCase() === 'bangla'
+
+);
+
+}
+
+else if(type === 'sport'){
+
+filtered =
+window.allChannels.filter(ch=>
+
+ch.category &&
+ch.category.toLowerCase() === 'sport'
+
+);
+
+}
+
+loadChannels(filtered);
+
+}
 </script>
 
 </body>
