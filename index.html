@@ -435,7 +435,10 @@ document.getElementById(
 `${day}, ${date} ${month} ${year} | ${hour}:${minute}:${second} ${ampm}`;
 
 }
+setInterval(updateClock,1000);
 
+updateClock();
+  
 /* LOAD CHANNELS */
 
 fetch('channels.json')
