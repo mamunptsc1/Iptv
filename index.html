@@ -460,6 +460,55 @@ background-position:-100% 0;
 }
 
 }
+  .weather-widget{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin:14px;
+
+padding:18px 22px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,0.08);
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 0 30px rgba(0,180,255,0.12);
+
+color:#fff;
+
+}
+
+.weather-temp{
+font-size:34px;
+font-weight:bold;
+}
+
+.weather-city{
+font-size:14px;
+opacity:.7;
+margin-top:4px;
+}
+
+.weather-status{
+font-size:18px;
+font-weight:bold;
+}
+
+.weather-extra{
+font-size:13px;
+opacity:.7;
+margin-top:4px;
+}
 </style>
 
 </head>
@@ -506,7 +555,37 @@ playsinline>
 </div>
 
 </div>
+<div class="weather-widget">
 
+<div class="weather-left">
+
+<div class="weather-temp"
+id="temp">
+--°
+</div>
+
+<div class="weather-city"
+id="city">
+Loading...
+</div>
+
+</div>
+
+<div class="weather-right">
+
+<div class="weather-status"
+id="status">
+🌤️
+</div>
+
+<div class="weather-extra"
+id="humidity">
+Humidity --
+</div>
+
+</div>
+
+</div>
 <!-- CONTENT -->
 
 <div class="content">
@@ -901,7 +980,76 @@ video.volume -= 0.1;
 }
 
 });
+async function loadWeather(lat,lon){
 
+const url =
+`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code`;
+
+const res = await fetch(url);
+
+const data = await res.json();
+
+document.getElementById(
+'temp'
+).innerHTML =
+Math.round(
+data.current.temperature_2m
+) + '°C';
+
+document.getElementById(
+'humidity'
+).innerHTML =
+'Humidity ' +
+data.current.relative_humidity_2m + '%';
+
+let emoji = '☀️';
+
+const code =
+data.current.weather_code;
+
+if(code >= 1) emoji = '☁️';
+
+if(code >= 51) emoji = '🌧️';
+
+if(code >= 71) emoji = '❄️';
+
+document.getElementById(
+'status'
+).innerHTML = emoji;
+
+}
+
+navigator.geolocation.getCurrentPosition(
+
+(position)=>{
+
+const lat =
+position.coords.latitude;
+
+const lon =
+position.coords.longitude;
+
+document.getElementById(
+'city'
+).innerHTML =
+'Your Location';
+
+loadWeather(lat,lon);
+
+},
+
+()=>{
+
+document.getElementById(
+'city'
+).innerHTML =
+'Parbatipur';
+
+loadWeather(25.6637,88.9307);
+
+}
+
+);
 </script>
 
 </body>
