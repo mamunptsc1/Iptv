@@ -380,44 +380,75 @@ border-radius:20px;
 
 /* MOBILE */
 
+
 @media(max-width:768px){
 
+.topbar{
+height:55px;
+padding:0 8px;
+}
+
+.notice{
+padding:14px;
+font-size:12px;
+border-radius:10px;
+}
+
+.clock{
+padding:10px 14px;
+font-size:10px;
+}
+
 .player{
-width:100%;
-aspect-ratio:16/9;
-height:auto;
-border-radius:28px;
-overflow:hidden;
-background:#000;
-}
-  video{
-width:100%;
-height:100%;
-object-fit:cover;
-background:#000;
-border-radius:28px;
-outline:none;
-border:none;
+height:210px;
+border-radius:24px;
 }
 
-video:fullscreen{
-object-fit:contain;
+.section-title{
+font-size:14px;
+letter-spacing:5px;
 }
 
-video:-webkit-full-screen{
-object-fit:contain;
+.category-btn{
+padding:12px 18px;
+font-size:14px;
+border-radius:14px;
+}
+
+.search{
+padding:15px;
+font-size:15px;
 }
 
 .grid{
-grid-template-columns:repeat(3,1fr);
+gap:12px;
 }
 
-}
-.skeleton{
-
-height:150px;
-
+.card{
+min-height:150px;
 border-radius:22px;
+padding:14px 8px;
+}
+
+.card img{
+width:60px;
+height:45px;
+}
+
+.card h3{
+font-size:13px;
+line-height:18px;
+}
+
+.footer{
+height:60px;
+font-size:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding-bottom:0;
+  }
+
 
 background:
 linear-gradient(
