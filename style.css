@@ -133,9 +133,8 @@ font-weight:300;
 
 margin-bottom:8px;
 
-position:static;
-top:0;
-z-index:1;
+position:fixed;
+
 
 background:transparent;
 padding:0;
@@ -206,9 +205,7 @@ border:1px solid rgba(255,255,255,0.08);
 
 margin-top:0;
 margin-bottom:18px;
-position:static;
-top:0;
-z-index:1;
+position:fixed;
 }
 
 /* GRID */
