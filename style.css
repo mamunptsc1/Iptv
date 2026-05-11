@@ -152,7 +152,7 @@ overflow-x:auto;
 margin-top:0;
 margin-bottom:10px;
 
-position:relative;
+position:sticky;
 top:0;
 z-index:1;
 
@@ -287,7 +287,7 @@ object-fit:contain;
 
 padding:4px;
 
-border-radius:18px;
+border-radius:48px;
 
 background:none;
 
