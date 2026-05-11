@@ -163,12 +163,7 @@ color:#dddfff;
 font-weight:300;
 
 margin-bottom:8px;
-
-
-
-
-
-
+  
 padding:0;
 }
 
@@ -182,11 +177,6 @@ overflow-x:auto;
 
 margin-
 margin-bottom:10px;
-
-
-
-
-
 
 padding:0;
 }
@@ -211,6 +201,16 @@ linear-gradient(90deg,#ff0066,#ff0055);
 
 box-shadow:
 0 0 25px rgba(255,0,120,0.45);
+}
+
+.fixed-top{
+
+border-bottom:
+1px solid rgba(255,255,255,0.06);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.35);
+
 }
 
 /* SEARCH */
