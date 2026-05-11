@@ -182,7 +182,7 @@ top:0;
 z-index:1000;
 background:#001133;
 padding:6px 0;
-margin-bottom:4px;
+margin-bottom:8px;
 }
 
 .category-bar{
@@ -198,11 +198,19 @@ margin-bottom:4px;
 }
 
 .search{
-width:100%;
+
 position:sticky;
-top:88px;
+
+top:110px;
+
 z-index:998;
-margin-bottom:8px;
+
+background:#001133;
+
+margin-top:8px;
+
+margin-bottom:16px;
+
 }
 /* GRID */
 
@@ -272,18 +280,16 @@ box-shadow:
 
 .card img{
 
-width:82px;
-height:82px;
+width:72px;
+height:72px;
 
 object-fit:contain;
 
-padding:4px;
+padding:2px;
 
-border-radius:18px;
+background:#fff;
 
-background:none;
-
-box-shadow:none;
+border-radius:14px;
 
 display:block;
 margin:auto;
