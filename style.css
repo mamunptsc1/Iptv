@@ -152,7 +152,7 @@ overflow-x:auto;
 margin-top:0;
 margin-bottom:10px;
 
-position:sticky;
+position:fixed;
 top:0;
 z-index:1;
 
@@ -206,8 +206,7 @@ border:1px solid rgba(255,255,255,0.08);
 
 margin-top:0;
 margin-bottom:18px;
-
-position:sticky;
+position:fixed;
 top:0;
 z-index:1;
 }
