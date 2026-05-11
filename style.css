@@ -208,10 +208,10 @@ align-items:center;
 overflow:hidden;
 
 border:
-1px solid rgba(255,255,255,0.04);
+1px solid rgba(255,255,255,0.10);
 
 box-shadow:
-0 15px 40px rgba(0,0,0,0.35);
+0 0 18px rgba(255,0,102,0.10);
 
 backdrop-filter:blur(18px);
 
