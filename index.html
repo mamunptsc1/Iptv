@@ -70,7 +70,20 @@ PREMIUM TV CHANNELS
 
 <div class="category-bar">
 
-<!-- category buttons -->
+<div class="category-btn active"
+onclick="filterCategory('all',this)">
+ALL (<span id="allCount">0</span>)
+</div>
+
+<div class="category-btn"
+onclick="filterCategory('bangla',this)">
+BANGLA
+</div>
+
+<div class="category-btn"
+onclick="filterCategory('sport',this)">
+SPORT
+</div>
 
 </div>
 
@@ -81,6 +94,7 @@ placeholder="🔍 Search channels..."
 id="search">
 
 </div>
+
 
 <!-- CHANNELS -->
 
