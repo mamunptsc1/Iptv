@@ -135,7 +135,7 @@ position:fixed;
 left:0;
 right:0;
 
-top:285px;
+top:330px;
 
 z-index:999;
 
@@ -388,7 +388,7 @@ padding:190px 30px 100px;
 
 .fixed-top{
 
-top:320px;
+top:360px;
 
 padding:16px 30px;
 
@@ -469,19 +469,11 @@ letter-spacing:8px;
 
 }
 
-/* BIG TV SCREEN */
-
 @media screen and (min-width:1400px){
-
-.content{
-
-padding:210px 50px 120px;
-
-}
 
 .fixed-top{
 
-top:340px;
+top:420px;
 
 padding:20px 50px;
 
@@ -500,6 +492,8 @@ gap:30px;
 
 min-height:320px;
 
+border-radius:34px;
+
 }
 
 .card img{
@@ -509,25 +503,19 @@ height:120px;
 
 }
 
-.card-title{
-
-font-size:26px;
-
-}
-
 .search{
 
-font-size:20px;
+font-size:22px;
 
-padding:20px;
+padding:22px;
 
 }
 
 .category-btn{
 
-font-size:20px;
+font-size:22px;
 
-padding:16px 34px;
+padding:18px 36px;
 
 }
 
