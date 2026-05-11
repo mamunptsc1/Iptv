@@ -1,0 +1,192 @@
+{
+  "info": {
+    "owner": "MD MAMUNUR RASHID",
+    "team": "xfireflix",
+    "generated_by": "IPTV HEXA PRO",
+    "contact": "t.me/mamunptsc",
+    "support": "https://t.me/mamunptsc",
+    "version": "v6.0",
+    "github": "https://github.com/mamunptsc1",
+    "note": "Educational & testing purposes only.",
+    "auto_update": true,
+    "update_interval": "1 hours",
+    "total_channels": 29,
+    "last_update": "2026-05-07 01:59 AM (BD Time)"
+  },
+  "channels": [
+    {
+      "name": "Star Jalsha",
+      "category": "bangla",
+      "logo": "https://raw.githubusercontent.com/mamunptsc1/iptv/main/logos/Star_Jalsha.webp",
+      "url": "https://tvsen3.aynascope.net/n64PH4YL/index.m3u8"
+    },
+    {
+      "name": "Star Jalsha 2",
+      "category": "bangla",
+      "logo": "https://raw.githubusercontent.com/mamunptsc1/iptv/main/logos/Star_Jalsha.webp",
+      "url": "https://playztv-apps.pages.dev/star-jalsha/index.m3u8"
+    },
+    {
+      "name": "Gopal Bhar",
+      "category": "bangla",
+      "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
+      "url": "https://live20.bozztv.com/giatvplayout7/giatv-209611/tracks-v1a1/mono.ts.m3u8"
+    },
+    {
+      "name": "Deepto TV",
+      "category": "bangla",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/3/3f/Deepto_TV_logo.png",
+      "url": "https://byphdgllyk.gpcdn.net/hls/deeptotv/0_1/index.m3u8"
+    },
+    {
+      "name": "Enter10 Bangla",
+      "category": "bangla",
+      "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
+      "url": "https://amg01448-samsungin-enterr10bangla-samsungin-ad-gg.amagi.tv/playlist/amg01448-samsungin-enterr10bangla-samsungin/playlist.m3u8"
+    },
+    {
+      "name": "Jamuna TV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/f9214b86-4bb5-47e9-9488-adb2bd14bf27_180x180_8b1db7bb-4597-4257-8846-567df3961cc2.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1701/output/index.m3u8"
+    },
+    {
+      "name": "Somoy TV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/2b7e4021-ff6b-4fb3-8a6e-36ff4388086d_180x180_8e4e88aa-10c0-4c91-8465-9c2ddad8b6e8.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/index.m3u8"
+    },
+    {
+      "name": "Channel 24",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/1a6ad6ed-400c-45a2-91e0-c98e36546b6b_180x180_29254c7a-99b4-4c0a-b861-3cbebaadfcfc.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1703/output/index.m3u8"
+    },
+    {
+      "name": "Independent TV",
+      "category": "bangla",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/57/Independent_Television_logo.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1704/output/index.m3u8"
+    },
+    {
+      "name": "Ekattor TV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/dc95386d-f418-4c84-bd9f-7d1442fba3f2_180x180_f4cf8821-b1d1-44c5-b35f-c95d1e054aac.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1705/output/index.m3u8"
+    },
+    {
+      "name": "ATN News",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/a41f0388-395e-47ec-9db8-477a3fd09d05_180x180_95c38a1d-7287-4c2d-83fe-e2536874e546.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1706/output/index.m3u8"
+    },
+    {
+      "name": "BTV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/e669d5a1-5d1b-4583-9832-aff70bdfd893_180x180_e18f5d1e-879c-44e1-b50f-863b724b665d.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1707/output/index.m3u8"
+    },
+    {
+      "name": "News24",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/aab85a80-8373-4e53-91cf-304a9dd85fed_180x180_News24.jpg",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1708/output/index.m3u8"
+    },
+    {
+      "name": "Bangla Vision",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/ae1abdc0-299e-4e38-a379-03cf02755414_180x180_f8b871aa-e538-4f02-a877-e30c966dbc30.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1715/output/index.m3u8"
+    },
+    {
+      "name": "NTV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/e7624c47-6598-4b68-9833-7102579ab0e0_180x180_a9967873-d8e5-4ce9-965c-a353761dc150.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1716/output/index.m3u8"
+    },
+    {
+      "name": "SA TV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/84a0fb8c-85cf-4d12-8504-8f9050437def_180x180_dbfdc900-49fd-4129-9575-ad0f08105fd4.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1720/output/index.m3u8"
+    },
+    {
+      "name": "ATN Bangla",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/9c9b0d26-e64e-4ec8-abe6-562390b00b85_180x180_18e8601b-aa29-4df7-9c76-370ec81b70c4.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1721/output/index.m3u8"
+    },
+    {
+      "name": "Machranga TV",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/1426078c-f33c-4451-b2e3-73f6a6a5787e_180x180_45a97962-9bbb-4b3b-b589-6012ecd68599.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1722/output/index.m3u8"
+    },
+    {
+      "name": "Channel i",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/e27d57d3-f17e-4e40-9cb4-7d5f1d577bda_180x180_0246741d-c4e5-4cad-967c-3ddbb5696260.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1723/output/index.m3u8"
+    },
+    {
+      "name": "Islamic TV",
+      "category": "bangla",
+      "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1724/output/index.m3u8"
+    },
+    {
+      "name": "DBC News",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/f71d343e-e574-4599-bed6-f622c2a6b741_180x180_0fb5d763-281f-4ed3-8c05-62aa33dfd0c2.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1728/output/index.m3u8"
+    },
+    {
+      "name": "Channel 9",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/9904a2b8-33ea-4fb8-88de-9d6563252bf9_180x180_43989ac5-a3a3-48a4-b628-de8f0815a8fc.png",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1729/output/index.m3u8"
+    },
+    {
+      "name": "Zee Bangla",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/92a89f33-066e-40b2-b931-7d8b0c211997_180x180_zee-bangla-logo.jpg",
+      "url": "http://starshare.cx:80/PeH5kPWFfG/infamous7funny/435"
+    },
+    {
+      "name": "Zee Bangla Cinema",
+      "category": "bangla",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/794347ed-ed16-4fb7-be30-a78218fb5f85_180x180_ZeeBanglaCinema.jpg",
+      "url": "http://starshare.cx:80/PeH5kPWFfG/infamous7funny/23305"
+    },
+    {
+      "name": "SPORT 5",
+      "category": "sport",
+      "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
+      "url": "http://starshare.cx:80/PeH5kPWFfG/infamous7funny/23305"
+    },
+    {
+      "name": "Star Sports 1",
+      "category": "sport",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/f628edc7-701f-4d64-97eb-623efd39d80f_180x180_Start-Sports-1-hd.jpg",
+      "url": "http://198.195.239.50:8095/SonyTenSports5/tracks-v1a1/mono.m3u8"
+    },
+    {
+      "name": "MAX HD",
+      "category": "sport",
+      "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
+      "url": "https://webott.viatv.com.np/v0t1/CineplexHD.stream/chunks.m3u8"
+    },
+    {
+      "name": "IPL LIVE",
+      "category": "sport",
+      "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
+      "url": "http://kstv.us:8080/live/qdxkt3R5pH/5118349267/15965.m3u8"
+    },
+    {
+      "name": "T Sports",
+      "category": "sport",
+      "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/5613629e-48b2-4bf1-918e-f0adc3abc394_180x180_tsports.png",
+      "url": "https://playztv-apps.pages.dev/tsports/index.m3u8"
+    }
+  ]
+}
