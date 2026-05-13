@@ -71,7 +71,7 @@ updateClock();
 
 Promise.all([
 
-fetch("channels1.json")
+fetch("channels.json")
 .then(res=>res.json()),
 
 fetch("bangla.json")
