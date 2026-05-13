@@ -1,0 +1,184 @@
+{
+  "channels": [
+    {
+      "name": "BPK TV 1701",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1701/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1702",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1703",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1703/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1704",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1704/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1705",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1705/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1706",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1706/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1707",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1707/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1708",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1708/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1709",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1709/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1710",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1711",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1711/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1712",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1712/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1713",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1713/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1714",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1714/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1715",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1715/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1716",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1716/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1717",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1717/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1718",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1718/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1719",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1719/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1720",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1720/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1721",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1721/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1722",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1722/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1723",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1723/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1724",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1724/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1725",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1725/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1726",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1726/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1727",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1727/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1728",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1728/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1729",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1729/output/index.m3u8"
+    },
+    {
+      "name": "BPK TV 1730",
+      "logo": "",
+      "category": "live",
+      "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1730/output/index.m3u8"
+    }
+  ]
+}
