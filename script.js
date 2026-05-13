@@ -69,23 +69,39 @@ updateClock();
 
 /* LOAD CHANNELS */
 
-fetch('channels.json')
+Promise.all([
 
-.then(res => res.json())
+fetch("channels1.json")
+.then(res=>res.json()),
 
-.then(data => {
+fetch("bangla.json")
+.then(res=>res.json())
 
-window.allChannels = data.channels;
+])
 
-loadChannels(data.channels);
+.then(([data1,data2])=>{
+
+const allChannels = [
+
+...data1.channels,
+...data2.channels
+
+];
+
+window.allChannels =
+allChannels;
+
+loadChannels(allChannels);
 
 document.getElementById(
 'allCount'
 ).innerText =
-data.channels.length;
+allChannels.length;
 
 const saved =
-localStorage.getItem('lastChannel');
+localStorage.getItem(
+'lastChannel'
+);
 
 if(saved){
 
