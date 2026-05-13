@@ -81,22 +81,43 @@ fetch("bangla.json")
 
 .then(([data1,data2])=>{
 
-const allChannels = [
-
+const mergedChannels = [
 ...data1.channels,
 ...data2.channels
-
 ];
 
-window.allChannels =
-allChannels;
+/* REMOVE DUPLICATE */
 
-loadChannels(allChannels);
+const uniqueChannels = [];
+
+const seen = new Set();
+
+mergedChannels.forEach(ch=>{
+
+const key = (
+(ch.name || '') +
+(ch.url || '')
+)
+.toLowerCase()
+.trim();
+
+if(!seen.has(key)){
+
+seen.add(key);
+
+uniqueChannels.push(ch);
+
+}
+
+});
+
+window.allChannels = uniqueChannels;
+
+loadChannels(uniqueChannels);
 
 document.getElementById(
 'allCount'
-).innerText =
-allChannels.length;
+).innerText = uniqueChannels.length;
 
 const saved =
 localStorage.getItem(
@@ -113,15 +134,21 @@ playChannel(saved);
 
 }
 
-});
+})
 
 /* SHOW CHANNELS */
 
-function loadChannels(channels){
+async function loadChannels(channels){
 
 let html = '';
 
-channels.forEach((ch,index)=>{
+for(const ch of channels){
+
+const isAlive = await checkStream(ch.url);
+
+if(!isAlive){
+continue;
+}
 
 html += `
 
@@ -138,11 +165,12 @@ onerror="this.src='https://i.ibb.co/3k5p1t4/live-icon.png'">
 
 `;
 
-});
+}
 
 document.getElementById(
 'channels'
 ).innerHTML = html;
+
 }
 
 /* CATEGORY */
@@ -229,6 +257,14 @@ card.classList.add('active');
 
 const video =
 document.getElementById('video');
+  video.onerror = function(){
+
+document.getElementById('loader')
+.style.display='none';
+
+alert('Channel not working');
+
+  }
 
 if(url.includes('.mp4')){
 
@@ -357,6 +393,35 @@ if(e.key === 'ArrowLeft'){
 if(video.volume > 0){
 
 video.volume -= 0.1;
+
+}
+
+}
+  /* DEAD LINK CHECKER */
+
+async function checkStream(url){
+
+try{
+
+const controller = new AbortController();
+
+const timeout = setTimeout(()=>{
+controller.abort();
+},8000);
+
+const response = await fetch(url,{
+method:'HEAD',
+mode:'no-cors',
+signal:controller.signal
+});
+
+clearTimeout(timeout);
+
+return true;
+
+}catch(err){
+
+return false;
 
 }
 
