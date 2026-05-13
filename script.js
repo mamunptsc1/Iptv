@@ -144,12 +144,6 @@ let html = '';
 
 for(const ch of channels){
 
-const isAlive = await checkStream(ch.url);
-
-if(!isAlive){
-continue;
-}
-
 html += `
 
 <div class="card"
@@ -393,35 +387,6 @@ if(e.key === 'ArrowLeft'){
 if(video.volume > 0){
 
 video.volume -= 0.1;
-
-}
-
-}
-  /* DEAD LINK CHECKER */
-
-async function checkStream(url){
-
-try{
-
-const controller = new AbortController();
-
-const timeout = setTimeout(()=>{
-controller.abort();
-},8000);
-
-const response = await fetch(url,{
-method:'HEAD',
-mode:'no-cors',
-signal:controller.signal
-});
-
-clearTimeout(timeout);
-
-return true;
-
-}catch(err){
-
-return false;
 
 }
 
