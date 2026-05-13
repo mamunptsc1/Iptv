@@ -230,6 +230,21 @@ card.classList.add('active');
 const video =
 document.getElementById('video');
 
+if(url.includes('.mp4')){
+
+video.src = url;
+
+video.play().then(()=>{
+
+document.getElementById('loader')
+.style.display='none';
+
+});
+
+return;
+
+}
+  
 if(Hls.isSupported()){
 
 if(window.hls){
