@@ -28,8 +28,8 @@
     },
     {
       "name": "Jaslsha movies",
-      "logo":
       "category": "movie",
+      "logo": "",
       "url":"http://103.59.176.72:8083/live4/tracks-v1a1/mono.m3u8?token=123"
     },
     {
@@ -196,8 +196,8 @@
     },
     {
   "name":"RTV",
-  "logo":"logo.png",
   "category":"bangla",
+  "logo":"logo.png",
   "url":"http://116.204.149.16/rtvhd/index.m3u8"
     }
   ]
