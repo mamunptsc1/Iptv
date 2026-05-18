@@ -27,6 +27,12 @@
       "url": "https://playztv-apps.pages.dev/star-jalsha/index.m3u8"
     },
     {
+      "name": Jaslsha movies",
+      "logo":
+      "category": "movie",
+      "url":"http://103.59.176.72:8083/live4/tracks-v1a1/mono.m3u8?token=123"
+    },
+    {
       "name": "Gopal Bhar",
       "category": "bangla",
       "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
@@ -159,10 +165,10 @@
       "url": "http://starshare.cx:80/PeH5kPWFfG/infamous7funny/23305"
     },
     {
-      "name": "SPORT 5",
+      "name": "T sports",
       "category": "sport",
       "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
-      "url": "http://starshare.cx:80/PeH5kPWFfG/infamous7funny/23305"
+      "url": "http://103.59.176.72:8083/live1/tracks-v1a1/mono.m3u8?token=123"
     },
     {
       "name": "Star Sports 1",
@@ -180,7 +186,7 @@
       "name": "IPL LIVE",
       "category": "sport",
       "logo": "https://i.ibb.co/3k5p1t4/live-icon.png",
-      "url": "https://cdn1.ctgiptv.com/willow-cricket/tracks-v1/mono.ts.m3u8"
+      "url": "http://103.59.176.72:8083/live3/tracks-v1a1/mono.m3u8?token=123"
     },
     {
       "name": "T Sports",
@@ -189,10 +195,10 @@
       "url": "https://playztv-apps.pages.dev/tsports/index.m3u8"
     },
     {
-  "name":"Movie",
+  "name":"RTV",
   "logo":"logo.png",
-  "category":"movie",
-  "url":"https://github.com/mamunptsc1/iptv/blob/main/logos/lv_7561080793653644597_20251119185411.mp4"
+  "category":"bangla",
+  "url":"http://116.204.149.16/rtvhd/index.m3u8"
     }
   ]
 }
